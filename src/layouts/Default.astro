@@ -1,16 +1,17 @@
 ---
 import '@fontsource-variable/inter';
 import "../styles/global.css";
+import { getAuthors } from '../authors';
 import Header from "../components/Header.astro";
-
 
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
----
 
+const authors = getAuthors(['nicholas', 'ben']);
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -23,11 +24,12 @@ const { title } = Astro.props;
 
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
 
-		<link rel="author" href="https://nicholascharriere.com">
-		<meta name="author" content="Nicholas Charriere">
-
-		<link rel="author" href="https://benreinhart.com">
-		<meta name="author" content="Ben Reinhart">
+		{authors.map(author => (
+			<>
+				<meta name="author" content={author.name}>
+				<link rel="author" href={author.website}>
+			</>
+		))}
 
 		<meta property="og:title" content="Axflow">
 		<meta property="og:description" content="The TypeScript framework for AI development">

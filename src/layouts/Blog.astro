@@ -1,9 +1,12 @@
 ---
 import "../styles/global.css";
+import { getAuthors } from "../authors";
 import Header from "../components/Header.astro";
 
 const { frontmatter } = Astro.props;
 const url = Astro.url.toString();
+
+const authors = getAuthors(frontmatter.authors);
 ---
 
 <!doctype html>
@@ -14,8 +17,14 @@ const url = Astro.url.toString();
 
     <title>{frontmatter.title}</title>
 		<meta name="description" content={frontmatter.description}>
-		<meta name="author" content={frontmatter.author}>
-		<meta name="keywords" content={frontmatter.tags || "LLM,AI,framework,TypeScript,React,JavaScript,axflow,nextjs"}>
+		<meta name="keywords" content={(frontmatter.tags || []).join(',')}>
+
+		{authors.map(author => (
+			<>
+				<meta name="author" content={author.name}>
+				<link rel="author" href={author.website}>
+			</>
+		))}
 
 		<meta property="og:type" content="article" />
 		<meta property="og:locale" content="en_US" />

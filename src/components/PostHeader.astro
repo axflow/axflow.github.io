@@ -1,4 +1,6 @@
 ---
+import { getAuthors } from '../authors';
+
 interface Props {
   title: string;
   authors: Array<'nicholas' | 'ben'>;
@@ -16,20 +18,7 @@ const dateHumanString = date.toLocaleString(undefined, {
   day: 'numeric',
 });
 
-const SUPPORTED_AUTHORS = {
-  nicholas: {
-    name: 'Nicholas Charriere',
-    handle: 'nichochar',
-    avatar: 'https://pbs.twimg.com/profile_images/1662264495077748736/C5QwHjvR_400x400.jpg'
-  },
-  ben: {
-    name: 'Ben Reinhart',
-    handle: 'benjreinhart',
-    avatar: 'https://pbs.twimg.com/profile_images/1686425375143006208/foua8ceA_400x400.jpg'
-  },
-}
-
-const authors = authorNames.map((name) => SUPPORTED_AUTHORS[name]);
+const authors = getAuthors(authorNames);
 ---
 <header class="flex flex-col">
   <h1 class="order-2 mb-4">{title}</h1>
