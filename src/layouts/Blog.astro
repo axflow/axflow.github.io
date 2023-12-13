@@ -1,0 +1,39 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+
+const { frontmatter } = Astro.props;
+const url = Astro.url.toString();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{frontmatter.title}</title>
+		<meta name="description" content={frontmatter.description}>
+		<meta name="author" content={frontmatter.author}>
+		<meta name="keywords" content={frontmatter.tags || "LLM,AI,framework,TypeScript,React,JavaScript,axflow,nextjs"}>
+
+		<meta property="og:type" content="article" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:title" content={frontmatter.title} />
+		<meta property="og:description" content={frontmatter.description} />
+		<meta property="og:url" content={url} />
+		<meta property="og:article:published_time" content={frontmatter.published} />
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
+
+		<script async="true" defer="true" data-domain="axflow.dev" src="https://plausible.io/js/script.js"></script>
+	</head>
+	<body class="relative bg-zinc-1000">
+    <Header />
+    <main class="z-10 md:flex md:justify-center pt-10 pb-40">
+			<article class="prose dark:prose-invert px-4 lg:px-0 break-word">
+				<slot />
+			</article>
+    </main>
+	</body>
+</html>

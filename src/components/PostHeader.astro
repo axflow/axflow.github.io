@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  authors: Array<'nicholas' | 'ben'>;
+  published: string;
+}
+
+const { title, published, authors: authorNames } = Astro.props;
+
+const date = new Date(published);
+const dateISOString = date.toISOString();
+const dateHumanString = date.toLocaleString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const SUPPORTED_AUTHORS = {
+  nicholas: {
+    name: 'Nicholas Charriere',
+    handle: 'nichochar',
+    avatar: 'https://pbs.twimg.com/profile_images/1662264495077748736/C5QwHjvR_400x400.jpg'
+  },
+  ben: {
+    name: 'Ben Reinhart',
+    handle: 'benjreinhart',
+    avatar: 'https://pbs.twimg.com/profile_images/1686425375143006208/foua8ceA_400x400.jpg'
+  },
+}
+
+const authors = authorNames.map((name) => SUPPORTED_AUTHORS[name]);
+---
+<header class="flex flex-col">
+  <h1 class="order-2 mb-4">{title}</h1>
+  <div class="order-3">
+    <ul class="flex flex-wrap text-sm leading-6 mx-0 px-0 space-x-8 -my-4">
+      {authors.map((author) => (
+        <li class="flex items-center font-medium whitespace-nowrap">
+          <img src={author.avatar} alt={`${author.name}'s avatar`} class="mr-3 w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800" decoding="async">
+          <div class="text-sm leading-4">
+            <div class="text-slate-900 dark:text-slate-200">{author.name}</div>
+            <div class="mt-1">
+              <a href="https://twitter.com/reinink" class="text-sky-500 hover:text-sky-600 dark:text-sky-400">@<!-- -->{author.handle}</a>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="text-sm leading-6 order-1">
+    <dl>
+      <dt class="sr-only">Date</dt>
+      <dd class="inset-x-0 pl-0">
+        <time datetime={dateISOString}>{dateHumanString}</time>
+      </dd>
+    </dl>
+  </div>
+</header>

@@ -46,6 +46,8 @@ const { title } = Astro.props;
 		<script async="true" defer="true" data-domain="axflow.dev" src="https://plausible.io/js/script.js"></script>
 	</head>
 	<body class="relative h-screen bg-zinc-1000">
+		<div class="absolute left-0 top-0 h-full w-full bg-zinc-1000 opacity-50"></div>
+		<div class="bg-dot-grid absolute left-0 top-0 h-full w-full"></div>
 		<Header />
 		<slot />
 	</body>
