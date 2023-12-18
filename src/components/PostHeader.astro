@@ -4,7 +4,7 @@ import { getAuthors } from '../authors';
 interface Props {
   title: string;
   authors: Array<'nicholas' | 'ben'>;
-  published: string;
+  published: Date;
 }
 
 const { title, published, authors: authorNames } = Astro.props;
