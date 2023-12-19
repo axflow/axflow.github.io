@@ -9,10 +9,12 @@ const allBlogPosts = await getCollection("posts", ({ data }) => {
 ---
 
 <Layout title="Blog">
-  <main class="relative mx-auto max-w-2xl px-8 lg:p0">
+  <main
+    class="relative mx-auto max-w-2xl px-0 md:px-8 lg:p0 selection:bg-teal-200 selection:text-zinc-900"
+  >
     <div class="px-6 text-center">
       <h1
-        class="bg-gradient-to-br from-white via-zinc-50 to-teal-200 bg-clip-text pb-6 pt-10 font-bold text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl md:pt-12 lg:text-7xl mb-4"
+        class="mx-auto bg-gradient-to-tr from-purple-600 via-teal-200 to-white bg-clip-text pb-6 pt-10 font-bold text-5xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl md:pt-12 lg:text-7xl mb-4"
       >
         Axflow blog
       </h1>
@@ -25,23 +27,23 @@ const allBlogPosts = await getCollection("posts", ({ data }) => {
       </div>
     </div>
 
-    <div class="flex flex-col gap-12 w-full mb-20">
+    <div class="flex flex-col gap-12 w-full pb-20">
       {
         allBlogPosts.map(
           (post) =>
             post.data.published && (
               <a href={`/blog/${post.slug}`}>
                 <article class="p-6 flex max-w-2xl flex-col items-start justify-between rounded-xl hover:bg-zinc-900">
-                  <div class="flex items-center gap-x-4 text-xs">
+                  <div class="flex items-center gap-4 text-xs flex-wrap">
                     <time
                       datetime={post.data.published.toISOString()}
                       class="text-gray-500"
                     >
                       {humanTime(post.data.published)}
                     </time>
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-2 flex-wrap">
                       {post.data.tags.map((tag) => (
-                        <div class="relative rounded-full bg-zinc-800 px-3 py-1.5 font-medium text-gray-400 truncate">
+                        <div class="rounded-full bg-zinc-800 px-3 py-1.5 font-medium text-gray-400 truncate">
                           {tag}
                         </div>
                       ))}
