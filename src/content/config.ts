@@ -7,7 +7,7 @@ const postsCollection = defineCollection({
       description: z.string(),
       authors: z.array(z.enum(['ben', 'nicholas'])),
       tags: z.array(z.string()),
-      published: z.date(),
+      published: z.date().optional(),
     })
 });
 

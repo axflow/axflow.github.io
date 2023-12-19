@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import Blog from '../../layouts/Blog.astro'
+import Post from '../../layouts/Post.astro'
 import PostHeader from '../../components/PostHeader.astro'
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('posts');
-  return blogEntries.map(entry => ({
+  const publishedBlogEntries = await getCollection('posts', ({data}) => {return data.published});
+  return publishedBlogEntries.map(entry => ({
     params: { slug: entry.slug }, props: { entry },
   }));
 }
@@ -14,7 +14,9 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Blog frontmatter={entry.data}>
-  <PostHeader title={entry.data.title} authors={entry.data.authors} published={entry.data.published}/>
-  <Content />
-</Blog>
+<Post frontmatter={entry.data}>
+  {entry.data.published && 
+    <PostHeader title={entry.data.title} authors={entry.data.authors} published={entry.data.published}/>
+    <Content />
+  }
+</Post>

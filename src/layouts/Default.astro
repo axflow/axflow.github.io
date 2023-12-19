@@ -48,9 +48,9 @@ const authors = getAuthors(['nicholas', 'ben']);
 		<script defer data-domain="axflow.dev" src="https://plausible.io/js/script.js"></script>
 	</head>
 	<body class="relative h-screen bg-zinc-1000">
-		<div class="absolute left-0 top-0 h-full w-full bg-zinc-1000 opacity-50"></div>
-		<div class="bg-dot-grid absolute left-0 top-0 h-full w-full"></div>
+		<div class="absolute left-0 top-0 h-full w-full bg-zinc-1000 opacity-50 -z-10"></div>
+		<div class="bg-dot-grid absolute left-0 top-0 h-full w-full -z-10"></div>
 		<Header />
-		<slot />
+		<slot class="z-10"/>
 	</body>
 </html>
