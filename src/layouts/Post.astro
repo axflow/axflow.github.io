@@ -47,7 +47,10 @@ import { ChevronLeft } from "lucide-astro";
       src="https://plausible.io/js/script.js"></script>
   </head>
   <body class="relative bg-zinc-1000">
-    <div class="bg-dot-grid absolute left-0 top-0 h-full w-full"></div>
+    <div
+      class="bg-dot-grid absolute left-0 top-0 h-full w-full opacity-80 bg-fixed"
+    >
+    </div>
     <Header />
     <a
       href="/blog"
@@ -57,7 +60,9 @@ import { ChevronLeft } from "lucide-astro";
       <p>Blog home</p>
     </a>
     <main class="z-10 md:flex md:justify-center pb-40">
-      <article class="prose dark:prose-invert px-4 lg:px-0 break-word z-10">
+      <article
+        class="prose dark:prose-invert px-4 lg:px-0 break-word z-10 selection:bg-teal-200 selection:text-zinc-900"
+      >
         <slot />
       </article>
     </main>
