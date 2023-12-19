@@ -9,35 +9,102 @@ tags:
   - Probabilistic Engineering
 published: 2023-12-13T00:00:00.000Z
 ---
+import { Image } from 'astro:assets';
+import capabilities from '../../images/navigating-the-shift/capabilities.png'
+import chevrolet from '../../images/navigating-the-shift/chevrolet.png'
+import dataLoop from '../../images/navigating-the-shift/data-loop.png'
+import fear from '../../images/navigating-the-shift/fear.png'
+import graph from '../../images/navigating-the-shift/graph.png'
+import studio from '../../images/navigating-the-shift/studio.webp'
 import Link from '../../components/Link.astro';
 export const components = {a: Link}
 
 
-## From traditional software engineering to AI-everywhere development
+## From traditional software engineering to probabilistic AI engineering
 
 Generative AI has taken the world by storm. ML has been around for decades, but recent breakthroughs in vision and text models have had an outsized impact on the landscape of tech.
 
-Today, all it takes for an engineering team to introduce AI features into a product is a few API calls. The previous bar requiring  an in-house team of highly specialized ML engineers that trains models has been abstracted out.
+Today, all it takes for an engineering team to introduce AI features into a product is a few API calls. The previous bar requiring  an in-house team of highly specialized ML engineers that trains models has been abstracted away. 
 
-The barrier to entry is lower than ever, and combined with the newly found quality that these APIs provide, we find ourselves in the largest technology revolution that we've seen in many years.
+The barrier to entry is lower than ever, and so we find ourselves in the largest technology revolution that we’ve seen in many years.
 
 And so, just like software was [eating the world](https://a16z.com/why-software-is-eating-the-world/) in the 2010s, **AI is eating software** in the 2020s. Most companies have already introduced AI into their organization, and are aggressively exploring ways to leverage it to improve their products, reduce their costs, and make their workforce more productive.
 
-This exciting change, like all change, comes with consequences. In particular, the role of SWEs is undergoing a significant transformation. Most engineers have experimented with these new APIs, on the job or on the side, but what they have yet to learn is that working with AI systems in production brings a unique set of challenges, and **requires a shift both in their mindset, and in their tools**.
+This exciting change, like all change, comes with consequences. In particular, the role of software teams is undergoing a significant transformation. It’s changing both _how_ they write software and _what_ software they write. These are both very interesting, but this article focuses on the latter. Most engineers at this point have experimented with the new APIs, whether on the job or on the side, however they typically have stayed in the realm of prototyping. AI systems in production bring a unique set of challenges, and **requires a shift both in mindset, and in tooling**.
 
-Teams that are serious about shipping AI products go through two sequential phases:
+<Image class="mx-auto rounded-sm" src={graph} alt="Graph of AI applications in production. Reliability over effort" width="600"/>
 
-- The capabilities phase, driven by the exciting possibilities of the positive cases
-- The fear phase, driven by controlling the negative cases
+## Excitement and fear
 
-These phases are separated by a very wide chasm (wider than nearly everyone thinks). Ever wondered why you see tons of *amazing* demos all over, but very few robust applications that are actually shipped yet? Self driving is the perfect example: we had [self-driving cars prototypes](https://www.youtube.com/watch?v=ntIczNQKfjQ) driving around in 1986, but only in 2022 did Cruise get the first permit to let autonomous cars drive within a major US city (San Francisco). Cruise had to go from proving that the car can go, to proving that it won't do anything wrong, and the latter problem is significantly harder than the first.
+Teams that are serious about shipping AI products go through two phases, in order:
 
-### The capabilities phase
+1. The **capabilities phase**, driven by exciting possibilities of the positive cases
+2. The **fear phase**, driven by the risks of the negative cases
 
-We're right in the middle of this phase right now. Ever since GPT-3.5 came out, developers everywhere are coming out with amazing demos and ideas of what these APIs can do *sometimes*. They can generate code! They can create images! They can be specialized assistants!
+These phases are separated by a very wide chasm (wider than nearly everyone thinks). Ever wondered why you see tons of _amazing_ demos all over, but very few robust applications that are actually shipped yet? Self driving is the perfect example: we had [self-driving cars prototypes](https://www.youtube.com/watch?v=ntIczNQKfjQ) driving around in 1986, but only in 2022 did Cruise get the first permit to let autonomous cars drive within a major US city (San Francisco). Cruise had to go from proving that the car can go, to proving that it won’t do anything wrong, and the latter problem is significantly harder than the first. This isn’t true in safety critical environments however, releasing any generative AI application presents a vast challenge when the context is the real world, and the input interface is an open text box.
 
-A lot of the existing tooling that we've seen grow in popularity in the past year is optimizing for this phase. Frameworks, tools and APIs are all about what you can get the AI to do. This is important, but it's not sufficient for most companies to get to launching actual products.
+### Capabilities phase
+
+<Image class="float-right pt-4 pl-4 rounded-sm" src={capabilities} alt="The capabilities phase. Notice that the team will soon discover some troubling things about their spelling..." width="400"/>
+Most companies are excitedly living the dream in this phase right now when it comes to generative AI. Ever since GPT-3.5 came out, developers everywhere are coming out with amazing demos and ideas of what these APIs can do sometimes. They can generate code! They can amazing images! They can be specialized assistants like doctors or lawyers!
+
+A lot of the existing tooling that we’ve seen grow in popularity in the past year has been optimizing for this phase. Frameworks, tools and APIs are all about what you can get the AI to do.
+
+This is a critical part of the journey, as well as a fun one! However beware of getting stuck here. This phase is not sufficient if your goal is launching products in the real-world.
+
 
 ### The fear phase
+<Image class="float-left pr-4 pt-4 rounded-sm" src={fear} alt="The fear phase" width="400"/>
 
-This is the big one. When I worked at Cruise, the most important metric for the company by far was Safety Critical Events, and we wanted that number to be as low as possible. Similarly, most people building customer support chatbots, nutrition assistants, code generators are not launching because they have to deal with all of the issues that come with non-determinism: hallucinations, unstable product experience,
+When I worked at Cruise, the most important metric for the company by far was Safety Critical Events, and we wanted that number to be as low as possible. Similarly, most people building customer support chatbots, nutrition assistants, code generators that get close to launching enter a similar mindset. Many are postponing their launches once they start discovering the issues that come with non-determinism: hallucinations, unstable product experience, brand risk, etc…
+
+Imagine having your customer support chatbot keep mentioning COVID 19, because of how relevant that was at training time? Or trying to ensure that people only ask relevant questions, and not ask your customer success bot to solve Navier-Stokes fluid equations (yes this happened, see below).
+
+<Image class="mx-auto rounded-sm" src={chevrolet} alt="Chevrolet customer support solves navier stokes" width="300"/>
+
+This mindset shift might be hard, but it's expected. Once product builders start thinking this way, they are ready to move to the next step, which is to **adapt their workflows and tooling** to help them conquer the fear through a data driven approach. An approach which systematically detects outlying behavior, measures quality, and empowers teams to make changes without causing regressions. You need to accept that there will be edge-cases when the real-world collides with your AI system, and build confidence that you can systematically improve and patch the system without regressions, as you go.
+
+## The continuous data loop
+
+This is where the concept of a continuous learning machine, that leverages a data loop comes into play.
+Unlike traditional software debugging and productivity, where issues are identified and fixed in a linear fashion, AI troubleshooting requires a probabilistic, data driven approach. When building AI systems, you need to build a systematic workflow for your company which **leverages production data to continuously learn, and improve the overall system**. 
+
+<Image class="mx-auto rounded-sm" src={dataLoop} alt="The continuous data loop of productive AI teams" width="600"/>
+
+Intuitively, this should make sense: the more self-driving cars drive around the streets of a city, the better drivers they should become; the more a customer support chatbot solves production customer issues, the better it should become. In practice, this intuition requires a lot of work (and tooling) to manifest. You need tools which connect together the entire AI stack, tools which are designed to help you navigate a probabilistic environment (not a deterministic one). They need to empower teams to troubleshoot, form hypotheses, perform experiments, track metrics, evaluate if the experiment was successful, and integrate back with production to redeploy the better AI system.
+
+Once equipped with such a workflow, teams can now do the previously impossible: systematically improve the business performance of the AI system, in a data-driven way. The tooling should help you:
+
+- **Monitor**: find outliers in the data that are worth investigating
+- **Troubleshoot & drill-down**: session replay, and visualization tools to understand what exactly went wrong and form a hypothesis on how this could be fixed
+- **Manage datasets**: Examples of edge cases that hit production, labeled golden sets, specialized example sets, etc…
+- **Modify with confidence**: Ability to change configuration, prompts, code, models, or anything about the system, and then test it against a baseline (typically, the existing production system).
+
+A fantastic proxy metric of a company’s “AI system productivity” is how quickly they can go through this loop. If it takes a team a month to go through such an iteration cycle, they stand no chance compared to a competitor who can do it in a week, or a day.
+
+
+## An example
+
+Let’s walk through an example of a team building a customer chatbot using an LLM, which has all of the right tooling. It starts with anomaly detection:
+
+An anomaly detection tool has notified the team that there are some examples of suspicious behavior that were detected.
+
+The team loads these up in a production replay tool, and inspect them manually at first. They realize that there is an attempt from users to jailbreak the AI customer support chatbot to retrieve customer data. The AI is thankfully not leaking data, but still attempting to help these hackers as best it can.
+
+The team decides to add a `hack` class to their initial intent routing prompt, which sits at the root of their application. They seed it with a few examples taken from the examples and explain that when this happens, the system should shut down politely and stop responding.
+
+Before redeploying the system, they run their large evaluation suites to make sure that changing the routing prompt didn’t have some unintended side effects. It turns out that it does mis-classify some requests from their test set, so they modify the prompt a second time to prevent that from happening, with some counter examples.
+
+They re-run the evaluations, and are satisfied that there are no significant regressions, and feel comfortable deploying the new `hack` classifier to production.
+
+They redeploy the system, and have setup an alert that notifies their visibility tooling when the classifier triggers. Indeed it catches a few attempts in the next few weeks, and prevents them well. 
+They know it’s not yet perfect, but as more data comes in and the adversaries adapt their strategy, the team knows that they will be able to adapt quickly by improving their system on the other side.
+
+## Axflow's mission
+
+Ben and I spent many years at Cruise building tooling for this continuous data loop. Our mission at Axflow is to bring that tooling to all the new product teams all over the world who are building AI applications, and are looking for a robust systematic way to iterate on their production AI systems. 
+
+We’ve already shipped an [open-source TypeScript framework](https://github.com/axflow/axflow), and are now working on some of the offline tooling (production session replay, drill down and dataset capabilities) through our new product: [Axflow Studio](https://studio.axflow.dev).
+<Image class="mx-auto rounded-sm" src={studio} alt="A screenshot of Axflow studio" width="600"/>
+
+If you’re interested in up-leveling your production AI workflow, [reach out](https://calendly.com/nichochar/15min), we love talking to builders and learn about your use cases. We want to help your team improve their iteration speed, and ship amazing AI experiences!
