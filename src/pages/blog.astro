@@ -2,7 +2,7 @@
 import { getAuthors } from '../authors';
 import Layout from '../layouts/Default.astro';
 import { getCollection } from 'astro:content';
-import { humanTime, ISOTime } from '../lib/utils';
+import { humanTime } from '../lib/utils';
 const allBlogPosts = await getCollection('posts', ({data}) => {
   return data.published
 });
