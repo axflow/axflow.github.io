@@ -30,13 +30,13 @@ The barrier to entry is lower than ever, and so we find ourselves in the largest
 
 And so, just like software was [eating the world](https://a16z.com/why-software-is-eating-the-world/) in the 2010s, **AI is eating software** in the 2020s. Most companies have already introduced AI into their organization, and are aggressively exploring ways to leverage it to improve their products, reduce their costs, and make their workforce more productive.
 
-This exciting change, like all change, comes with consequences. In particular, the role of software teams is undergoing a significant transformation. It’s changing both _how_ they write software and _what_ software they write. These are both interesting topics, but this article solely focuses on the latter. Most engineers at this point have experimented with the new APIs, whether on the job or on the side, and they typically have stayed in the realm of prototyping. 
+This exciting change, like all change, comes with consequences. In particular, the role of software teams is undergoing a significant transformation. It’s changing both _how_ they write software and _what_ software they write. Most engineers at this point have experimented with the new APIs, for their employer or for themselves, yet they typically have stayed in the realm of prototyping. 
 
 AI systems in production are a whole different game, they come with a unique set of challenges, and **require a shift both in mindset, and in tooling**.
 
 <Image class="mx-auto rounded-sm" src={graph} alt="Graph of AI applications in production. Reliability over effort" width="600"/>
 
-## Excitement and fear
+## Production AI is fear driven
 
 Teams that are serious about shipping AI products go through two phases, in order:
 
@@ -51,20 +51,20 @@ These phases aren't limited to safety critical environments. They affect all AI 
 
 <Image class="float-right pt-4 pl-4 rounded-sm" src={capabilities} alt="The capabilities phase. Notice that the team will soon discover some troubling things about their spelling..." width="400"/>
 
-Most companies are excitedly living their best lives in this phase right now when it comes to generative AI. Ever since GPT-3.5 came out, developers everywhere have come out with amazing demos and ideas of what these APIs can do. 
+Most companies are excitedly living their best lives in this phase right now when it comes to generative AI. Ever since GPT-3 came out, builders everywhere have come out with amazing demos and ideas of what these APIs can do. 
 
 They can generate code! And amazing images! They can be specialized assistants like doctors or lawyers!
 
 A lot of the existing tooling around AI, particualrly the tooling that we’ve seen grow in popularity in the past year is optimized for this phase: frameworks, tools and APIs are all about what you can get the AI to _do_.
 
-This is a critical part of the journey, as well as a fun one! However beware of getting stuck here. This phase is not sufficient if your goal is launching products in the real-world.
+This capabilities phase, which can be assimilated to a research phase, is a critical part of the journey. It's fun and exciting, however beware of getting stuck here. It will not cut it if your goal is launching products in the real-world.
 
 
 ### The fear phase
 
 <Image class="float-left pr-4 pt-4 rounded-sm" src={fear} alt="The fear phase" width="400"/>
 
-When I worked at Cruise, the most important metric for the company (by a lot) was Safety Critical Events, and we wanted that number to be _as low as possible_. Similarly, most people building customer support chatbots, nutrition assistants, code generators that get close to launching enter a similar mindset: "How can I prevent the bad things.". Many are postponing their launches once they discover the issues that come with non-determinism: hallucinations, unstable product experience, brand risk, etc…
+**With production, comes fear.** When I worked at Cruise, the most important metric for the company (by a lot) was Safety Critical Events, and we wanted that number to be _as low as possible_. Similarly, most people building customer support chatbots, nutrition assistants, code generators that get close to launching enter a similar mindset: "How can I prevent the bad things.". Many are postponing their launches once they discover the issues that come with non-determinism: hallucinations, unstable product experience, brand risk, etc…
 
 Imagine having your customer support chatbot keep mentioning COVID 19, because of how relevant that was at training time? Or trying to ensure that people only ask relevant questions, and not how to solve Navier-Stokes fluid equations (yes this happened, check below 👇).
 
