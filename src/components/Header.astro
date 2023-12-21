@@ -1,3 +1,7 @@
+---
+import Link from "./Link.astro";
+---
+
 <header
   class="sticky z-10 flex h-12 items-center border-b border-zinc-800/80 bg-zinc-1000/20 backdrop-blur-lg"
 >
@@ -13,7 +17,14 @@
         </a>
       </div>
 
-      <div class="flex flex-1 justify-end gap-6">
+      <div class="flex flex-1 justify-end gap-6 items-center">
+        <Link class="text-zinc-300 hover:text-zinc-200" href="/blog">Blog</Link>
+        <Link
+          class="text-zinc-300 hover:text-zinc-200 px-4"
+          href="https://studio.axflow.dev"
+        >
+          Studio
+        </Link>
         <a href="https://github.com/axflow/axflow">
           <img
             src="/github-mark-white.png"
@@ -31,4 +42,3 @@
     </nav>
   </div>
 </header>
-
