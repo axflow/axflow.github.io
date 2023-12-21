@@ -44,7 +44,10 @@ import { ChevronLeft } from "lucide-astro";
     <meta name="twitter:creator" content="@axflow_dev" />
     <meta name="twitter:title" content={`${frontmatter.title} | Axflow blog`} />
     <meta name="twitter:description" content={frontmatter.description} />
-    <meta name="twitter:image" content={frontmatter.cover.src} />
+    <meta
+      name="twitter:image"
+      content={`https://axflow.dev${frontmatter.cover.src}`}
+    />
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
 
