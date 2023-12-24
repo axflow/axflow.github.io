@@ -2,12 +2,12 @@
 import Link from "./Link.astro";
 ---
 
-<header
-  class="sticky z-10 flex h-12 items-center border-b border-zinc-800/80 bg-zinc-1000/20 backdrop-blur-lg"
->
-  <div class="container mx-auto">
+<header class="sticky flex w-full justify-center px-2 pt-2">
+  <div
+    class="flex h-12 w-full items-center justify-between rounded-full border border-surface px-2 backdrop-blur-lg bg-surface-opaque container"
+  >
     <nav
-      class="flex w-full items-center justify-between px-4 sm:px-20"
+      class="flex w-full items-center justify-between px-4"
       aria-label="Global"
     >
       <div class="flex flex-1">
@@ -18,9 +18,14 @@ import Link from "./Link.astro";
       </div>
 
       <div class="flex flex-1 justify-end gap-3 sm:gap-6 items-center">
-        <Link class="text-zinc-300 hover:text-zinc-200" href="/blog">Blog</Link>
         <Link
-          class="text-zinc-300 hover:text-zinc-200 px-4"
+          class="text-zinc-300 text-sm font-medium hover:text-zinc-200"
+          href="/blog"
+        >
+          Blog
+        </Link>
+        <Link
+          class="text-zinc-300 text-sm font-medium hover:text-zinc-200 px-4"
           href="https://studio.axflow.dev"
         >
           Studio

@@ -2,10 +2,197 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    /* --destructive: 0 84.2% 60.2%; */
+    /* --destructive-foreground: 0 0% 98%; */
+
+    --destructive: 0 91% 71%;
+    --destructive-foreground: 240 4% 16%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.5rem;
+
+    --radius-round: 20px;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    /* --destructive: 0 62.8% 30.6%; */
+    /* --destructive-foreground: 0 0% 98%; */
+
+    --destructive: 0 91% 71%;
+    --destructive-foreground: 240 4% 16%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+
+  /* Background Color */
+  .bg-surface {
+    @apply bg-white dark:bg-zinc-1000;
+  }
+  .bg-surface-inverse {
+    @apply bg-zinc-1000 dark:bg-white;
+  }
+  .bg-surface-opaque {
+    @apply bg-white/40 dark:bg-zinc-1000/60 backdrop-blur-lg;
+  }
+  .bg-surface-50 {
+    @apply bg-zinc-50 dark:bg-zinc-900;
+  }
+  .bg-surface-50-opaque {
+    @apply bg-zinc-50/40 dark:bg-zinc-900/40 backdrop-blur-lg;
+  }
+  .bg-surface-100 {
+    @apply bg-zinc-100 dark:bg-zinc-800;
+  }
+  .bg-surface-200 {
+    @apply bg-zinc-200 dark:bg-zinc-700;
+  }
+  .bg-warning {
+    @apply bg-amber-500 dark:bg-amber-300;
+  }
+  .bg-info {
+    @apply bg-blue-500 dark:bg-blue-300;
+  }
+  .bg-button {
+    @apply bg-zinc-300/60 dark:bg-zinc-800/60 backdrop-blur-lg hover:bg-zinc-300/80 dark:hover:bg-zinc-800/80 transition-colors;
+  }
+  .bg-accent-primary {
+    @apply bg-violet-500 dark:bg-teal-200;
+  }
+
+  /* Borders */
+  .border-surface {
+    @apply border-zinc-300 dark:border-zinc-800;
+  }
+  .border-surface-lighter {
+    @apply border-zinc-200 dark:border-zinc-700;
+  }
+  .border-button {
+    @apply border-zinc-300/40 dark:border-zinc-700/40;
+  }
+  .border-input {
+    @apply border-zinc-300/40 dark:border-zinc-700/40;
+  }
+  .border-axflow-primary {
+    @apply border-violet-500 dark:border-teal-200;
+  }
+
+  /* Text Color */
+  .text-color {
+    @apply text-zinc-800 dark:text-zinc-200;
+  }
+  .text-color-700 {
+    @apply text-zinc-700 dark:text-zinc-400;
+  }
+  .text-color-600 {
+    @apply text-zinc-600 dark:text-zinc-500;
+  }
+  .text-color-400 {
+    @apply text-zinc-400 dark:text-zinc-600;
+  }
+  .text-color-200 {
+    @apply text-zinc-200 dark:text-zinc-800;
+  }
+  .text-color-100 {
+    @apply text-zinc-100 dark:text-zinc-900;
+  }
+  .text-color-primary {
+    @apply text-violet-500 dark:text-teal-200;
+  }
+  .text-color-secondary {
+    @apply text-teal-500 dark:text-violet-400;
+  }
+  .text-color-tertiary {
+    @apply text-orange-600 dark:text-orange-300;
+  }
+  .text-color-danger {
+    @apply text-red-500 dark:text-red-400;
+  }
+
+  /* Ring color */
+  .ring-surface {
+    @apply ring-zinc-300 dark:ring-zinc-800;
+  }
+  .ring-color-primary {
+    @apply ring-violet-500 dark:ring-teal-200;
+  }
+  .ring-color-secondary {
+    @apply ring-teal-500 dark:ring-violet-400;
+  }
+  .ring-color-tertiary {
+    @apply ring-orange-600 dark:ring-orange-300;
+  }
+
+  /* Utilities */
+  .inverted-light {
+    @apply filter invert;
+  }
+  .dark .inverted-light {
+    @apply filter invert-0;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .button {
+    @apply bg-button border-button hover:-translate-y-[1px] hover:shadow-lg cursor-pointer disabled:pointer-events-none;
+  }
 }
 
 @layer utilities {
@@ -24,17 +211,4 @@
     background-size: 32px 32px;
     background-position: -15px -15px;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: #121213;
 }
