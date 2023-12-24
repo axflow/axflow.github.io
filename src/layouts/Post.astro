@@ -7,7 +7,6 @@ const { frontmatter } = Astro.props;
 const url = Astro.url.toString();
 
 const authors = getAuthors(frontmatter.authors);
-import { ChevronLeft } from "lucide-astro";
 ---
 
 <!doctype html>
@@ -62,15 +61,6 @@ import { ChevronLeft } from "lucide-astro";
     >
     </div>
     <Header />
-    <div class="container mx-auto">
-      <a
-        href="/blog"
-        class="flex pl-2 md:pl-20 pt-6 items-center gap-2 opacity-60 hover:underline hover:cursor-pointer"
-      >
-        <ChevronLeft class="h-6 w-6" />
-        <p>Blog home</p>
-      </a>
-    </div>
     <main class="z-10 md:flex md:justify-center pb-40">
       <article
         class="prose prose-invert px-4 lg:px-0 break-word z-10 selection:bg-teal-200 selection:text-zinc-900"
