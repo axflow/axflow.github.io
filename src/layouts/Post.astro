@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import { getAuthors } from "../authors";
 import Header from "../components/Header.astro";
@@ -16,6 +17,7 @@ const authors = getAuthors(frontmatter.authors);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{frontmatter.title}</title>
+    <ViewTransitions />
     <meta name="description" content={frontmatter.description} />
     <meta name="keywords" content={(frontmatter.tags || []).join(",")} />
 

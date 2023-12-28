@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import "@fontsource-variable/inter";
 import "../styles/global.css";
 import { getAuthors } from "../authors";
@@ -20,6 +21,7 @@ const authors = getAuthors(["nicholas", "ben"]);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>{title || "Axflow"}</title>
+    <ViewTransitions />
     <meta
       name="description"
       content="The TypeScript framework for AI development"
