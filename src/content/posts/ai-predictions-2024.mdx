@@ -20,11 +20,11 @@ import hax0r from "../../images/predictions24/hax0r.png";
 import Link from "../../components/Link.astro";
 export const components = { a: Link };
 
-It is Jan 7, 2024, a little over a year of chatGPT being released to the public. Here are some of my thoughts on where AI is at, and where it is going.
+It is Jan 7, 2024, a little over a year of chatGPT being released to the public. Here are some of my thoughts on where AI is at today, as well as some predictions of where it's going.
 
-This has been the year of generative AI, and what a technology moment is has been. As Mark Twain would say: the LLM revolution happened in two ways, gradually then suddenly. The research has been baking for years, and this year everything fell into place. It's been a wild ride.
+This has been the year of generative AI, and what a technology moment is has been. As Mark Twain would say: the LLM revolution happened in two ways, gradually then suddenly. The research has been baking for years, and this year everything fell into place.
 
-Quickly after the first modality — text — showed itself to be of immense reasoning and generation capabilities, the other modalities started pouring out as fast followers. Image models, pioneered by [Midjourney](https://www.midjourney.com/), have reached incredible levels of precision, as well as artistic levels. To visualize the progress of state of the art image AI this year, look at this before and after fitness pic for Midjourney:
+Quickly after the first modality — text — showed itself to be of immense reasoning and generation capabilities, the other modalities started pouring out as fast followers. Image models, pioneered by [Midjourney](https://www.midjourney.com/), have reached incredible levels of quality and artistic levels. This is well illustrated by Nick's tweet of the before/after fitness pic for Midjourney.
 
 <blockquote class="twitter-tweet tw-align-center" data-theme="dark">
   <p lang="und" dir="ltr">
@@ -40,15 +40,19 @@ Quickly after the first modality — text — showed itself to be of immense rea
   charset="utf-8"
 ></script>
 
-Video is still early, but clearly showing itself with products like [Pika](https://pika.art/) and [Runway](https://runwayhttps://runwayml.com/). We're starting to see news being personalized for you and delivered via a video feed of an AI generated human, which you can interact with.
+Video is still early, but coming out of its shell with products like [Pika](https://pika.art/) and [Runway](https://runwayhttps://runwayml.com/). We're starting to see news being personalized for you and delivered via a video feed of a generated human, which you can interact with.
 
-Finally, audio models, both to- and from-text, have achieved a level which can fool any human. I personally regularly use the "voice" version of chatGPT to brainstorm with it while I walk my dog. We sped past the Turing test so fast that no one even beat an eyelash about it. What now?
-
-Let's take a breath and start by looking at where we are today. After that, I will share some of my predictions of where all of this is going in 2024. In this post I'm focusing on higher level aspects: products, impact on industry and people. There's also a lot to say by going deep into the technical details of architectures and infrastructure of AI, but I'm leaving that for a future post.
+Finally, audio models, both text-to-speech and speech-to-text, have achieved a level which can fool any human. I personally regularly use the "voice" version of chatGPT to brainstorm with it while I walk my dog. We sped past the Turing test so fast that no one even beat an eyelash about it. What now?
 
 > We sped past the Turing test so fast that no one even beat an eyelash.
 
-# Today
+Let's take a breath and start by looking at where products built with these models are today. After that, I will share some of my predictions of where all of this is going in 2024. In this post I'm focusing on products, markets and people. There's a lot to say by going deep into the technical details of architectures and infrastructure of AI, but I'm leaving that for a future post.
+
+## Today
+
+<span class="opacity-50 text-xs">
+  [_(skip to my predictions)_](#tomorrow-my-predictions)
+</span>
 
 Beyond the most basic "run model against a prompt" products like chatGPT and Midjourney, we're starting to see new, major categories of **products** being focused on. Three really stood out to me this year:
 
@@ -56,7 +60,7 @@ Beyond the most basic "run model against a prompt" products like chatGPT and Mid
 - Code generation and reasoning
 - Unstructured data processing: classification, extraction and translation
 
-## Consumer assistants
+### Consumer assistants
 
 These are by far the most common, we're having a chatbot renaissance. Entrepreneurs from 2017 must be watching, annoyed, as their vision of the future from back then is totally a reality now.
 
@@ -68,7 +72,7 @@ There are some curious missing players here: why isn't Alexa powered by one of t
 
 > Where are Apple and Amazon?
 
-## Code generation
+### Code generation
 
 This is an interesting category, and arguably could be folded into the consumer assistants above, but it's big and unique enough that it's worth analyzing by itself.
 
@@ -83,13 +87,13 @@ I'm seeing amazing innovation in this area, [codestory](https://codestory.ai) an
 
 I expect developers to be the first to benefit from the LLM wave, just like they were the first to take advantage of computers.
 
-## Unstructured document parsing
+### Unstructured document parsing
 
 This one is pretty boring but still true. Data pipelines with previously complex heuristic logic are being migrated over to LLMs, and this is happening all over the place. Well, it's happening in particular at large companies, full of backend engineers who's job it is to do some kind of ETL between obscure services.
 
 LLMs are fantastic at classification tasks, or fuzzy feature extraction from semi-structured data sources (think web scraping or getting info from a pdf). I have just described a huge portion of what backend engineers in large companies do every day: ingest some data from a source, transform it, and load it into the next service. It's hard to emphasize how common this type of work is, and how well LLMs perform on this task (even worse models, like GPT3.5).
 
-I won't spend too much time here, but after talking with larger companies, I've observed this to be one of the biggest applications of the technology in **production** today. It feels more like a productivity increase than a quantum leap in outcomes, if you ask me.
+I won't spend too much time on this, but after talking with larger companies, I've observed this to be one of the biggest applications of the technology in **production** today. It feels more like a productivity increase than a quantum leap in outcomes, if you ask me.
 
 <div class="mx-auto">
   <Image
@@ -99,16 +103,15 @@ I won't spend too much time here, but after talking with larger companies, I've 
     width="550"
   />
   <span class="mx-auto text-center opacity-80 text-sm">
-    An image I made using Midjourney. Art is also a big application of these
-    models
+    A tiled pattern I made using Midjourney
   </span>
 </div>
 
 ---
 
-# Tomorrow
+## Tomorrow: my predictions
 
-## Superproductivity of engineers: software commoditization
+### Superproductivity of engineers: software commoditization
 
 My first prediction is around developers. Given the previously discussed attention on code understanding and generation, we will see a remarkable productivity boost for software engineers. When combined with a huge increase in the number of them entering the market, this is leading us towards a big shift: **code is about to become a commodity**.
 
@@ -123,13 +126,15 @@ The productivity will likely take the shape of AIs writing simple code, behaving
 
 Thus, code will commoditize. Which leads me to my next point.
 
-## The rising importance of taste, product sense, and design
+### The rising importance of taste, product sense, and design
 
 As software becomes commoditized, the differentiating factor for successful products will increasingly be not just what your software can do, but how it does it.
 Product sense, taste, and design will emerge as key skills. They've mattered up until now, of course, but for a lot of products, the bottleneck has been engineering.
 If you're a developer, it's a great time to level up your design and product skills, and improve your attention to details. This shift will rebalance the value of skill sets within the tech industry, placing greater emphasis on roles that have sometimes been seen as secondary to core engineering, such as UI/UX designers, and product managers.
 
-## Models moving to the edge
+**I predict the ratio of non-technical to technical members of AI products will trend up in 2024.**
+
+### Models moving to the edge
 
 I'm a huge believer in open-source, inside and outside of AI. Today, proprietary models are ahead (chatGPT at openAI in particular): big models served as black boxes by a few incumbents. However the trend is clear: open-source models are catching up (llama, mistral) and getting us closer to a future where we can push this stuff to the edge, running on devices we own, not a computer in the cloud.
 
@@ -139,7 +144,9 @@ This advancement will not only enhance existing applications but also enable new
 
 I think that by the end of 2024, we'll see significantly more people running tools like GitHub copilot with local models running on their machines. Video calls will leverage AI models to improve your video in real-time, once again running locally. I predict that edge devices will beef up in the short term so that we can usher this world forward. It's worth noting that openAI, a $80B juggernaut led by a brilliant business person, will not just lay down and die here. They will fight back in interesting ways, the most obvious of which is going vertical and building a hardware device which is optimized to run _their_ models on the edge.
 
-## Streaming probably won't matter
+**I predict that most of us will regularly use products running models directly on our phones and laptops by the end of 2024.**
+
+### Streaming probably won't matter
 
 You know how right now, all of the LLM apps stream of tokens back on the screen, printing words one by one as if the AI is typing? ChatGPT of course, but most GPT-4 powered apps choose this UX, because waiting 25s for a response is absolutely awful.
 
@@ -147,7 +154,7 @@ When the response time gets to be around 1s however, the streaming UX flips and 
 
 I predict that the dominant streaming UX will disappear for text models. It's minor but it will accelerate things because streaming semantics are much harder to work with technically. You don't know the number of tokens until it's finished, it's harder to parallelize the UX, joining third party data is not-obvious (we had to design [our own protocol](https://docs.axflow.dev/guides/models/streaming.html) for this in Axflow).
 
-## Apple, Amazon & friends have joined the chat
+### Apple, Amazon & friends have joined the chat
 
 Companies like Apple and Amazon with their massive distribution networks and big data moats are poised to make significant strides.
 
@@ -167,7 +174,7 @@ Their delayed entry into the LLM space might be strategic, or it might be becaus
 
 **My prediction is that by the end of 2024, Apple and Amazon are major players, just as large as openAI (Microsoft I guess) and Google are today.**
 
-## Software will disrupt itself
+### Software will disrupt itself
 
 Since 2000, software has been [eating the world](https://a16z.com/why-software-is-eating-the-world/). But now **AI is eating software**. I predict that many businesses with hundreds or even thousands of employees providing a software only service (think a typical SaaS company like Calendly or Slack) will get their economics absolutely destroyed.
 A decent engineer will likely be able to write a slack-like application, definitely good enough to cancel the 500k/year contract, in a couple of months.
@@ -178,10 +185,14 @@ Remember when higher up we said that there will be a _lot_ of engineers?
 The buy versus build equation is about to get much more competitive, which I think will hurt the technology sector's culture a lot. I expect Silicon Valley to go through a bit of a shock because of this. There is a lot of entitlement built in, which is downstream of huge margin. This one is hard to predict, but I'm very curious to see how it evolves with this change.
 The most measurable part of this, in my opinion, is that companies will get leaner. The "revenue per employee" has to go up. One of our values in my current company is that lean teams are superior, a strongly held belief that I think is about to get proven again and again in 2024.
 
-## Tiny billion dollar companies
+**I predict a few major companies valued at > $1B today will disappear entirely by the end of the year.**
+
+### Tiny billion dollar companies
 
 With the previously discussed lowered cost of tools and increased accessibility of AI technologies, startups can operate leaner than ever. This agility means they can experiment and pivot with greater ease, leading to a more dynamic and innovative startup ecosystem.
 This means a higher failure rate as the barrier to entry lowers and competition intensifies. Nevertheless, this churn is beneficial in the long run — it fosters a culture of rapid innovation and iteration, ultimately benefiting consumers with more choices and better products. I predict that we'll see many small startups be created. Many will fail, but some will succeed, and the ones who fail can do so cheaply. Ultimately, this is great news for consumers and innovation.
+
+**I predict that the average number of employees in unicorns created after 2023 will be significantly lower than before 2023.**
 
 <div class="mx-auto">
   <Image
@@ -195,9 +206,17 @@ This means a higher failure rate as the barrier to entry lowers and competition 
   </span>
 </div>
 
-# 🚀 Conclusion
+### New AI first hardware will fail
 
-As an optimist, as we move further into 2024, I couldn't be more excited. I think that the world, and particularly the landscape of technology companies and products is going to change more next year than it has any previous year of my career. Open-source will catch up with proprietary modes, and help push inference to (maybe new categories of) edge devices everywhere. AI is going to catalyze competition, productivity, and software is about to disrupt itself.
+Some companies have come out with radically innovative hardware. The first of these is [humane's AI pin](https://hu.ma.ne/aipin). I predict we'll see more of these in 2024. Sam Altman is apparently in talks with hardware manifacturers ([and Jonny Ive?](https://www.theinformation.com/articles/designer-jony-ive-and-open-ais-sam-altman-discuss-ai-hardware-project)) to build his own dedicated AI hardware.
+
+I personally have a hard time believing that we'll have a separate device from our smartphones. These already have all of our data, have AI optimized chips, and full penetration of the market. The only play that I could see working is a new AI-first mobile phone, which might be something Microsoft or Amazon attempt (both having lots of FOMO since they missed the mobile wave).
+
+**I predict non-smartphone AI devices will fail. The AI device of the future is likely an iPhone or android phone with a dedicated GPU chip for AI.**
+
+## 🚀 Conclusion 🏎️
+
+I'm a techno-optimist, so I couldn't be more excited as we move into 2024. I believe our worl will change more next year than it has any previous year of my career. Open-source will catch up with proprietary modes, and help push inference to (maybe new categories of) edge devices everywhere. AI is going to catalyze competition, productivity, and software is about to disrupt itself.
 
 AI is a centralizing technology, so the companies that benefit most are the incumbents with large data and distribution moats. For this reason we might all talk mostly about Siri 2.0 next year, with chatGPT being old news, one of a few competitors with less access to your private data and therefore less useful as a consumer app. Consumers will benefit from many domain specific AI assistants, developers will enter a flywheel of productivity co-working with AI, and companies are about to get very lean.
 
