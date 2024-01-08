@@ -208,9 +208,10 @@
 
   .bg-dot-grid {
     background-image: radial-gradient(
-      rgba(255, 255, 255, 0.15) 1px,
+      rgba(255, 255, 255, 0.25) 1px,
       transparent 0
     );
+    mask-image: linear-gradient(rgb(0 0 0 / 100%) 0%, transparent 700px);
     background-size: 32px 32px;
     background-position: -15px -15px;
   }
