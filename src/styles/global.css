@@ -84,7 +84,7 @@
   /*   @apply bg-white/40 dark:bg-zinc-1000/60 backdrop-blur-lg; */
   /* } */
   .bg-surface-opaque {
-    bg-zinc-1000/60 backdrop-blur-lg;
+    @apply bg-zinc-1000/60 backdrop-blur-lg;
   }
   .bg-surface-50 {
     @apply bg-zinc-50 dark:bg-zinc-900;
