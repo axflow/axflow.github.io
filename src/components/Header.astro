@@ -2,6 +2,15 @@
 import Link from "./Link.astro";
 ---
 
+<script>
+  const productsBtn = document.getElementById("dropdownHoverButton");
+  productsBtn?.addEventListener("click", () => {
+    const productsMenu = document.getElementById("dropdownHover");
+    productsMenu?.classList.toggle("hidden");
+    productsMenu?.classList.toggle("block");
+  });
+</script>
+
 <header class="flex w-full justify-center px-2 pt-2">
   <div
     class="flex h-12 w-full items-center justify-between rounded-full border border-surface px-2 backdrop-blur-lg bg-surface-opaque container"
@@ -17,19 +26,51 @@ import Link from "./Link.astro";
         </a>
       </div>
 
-      <div class="flex flex-1 justify-end gap-3 sm:gap-6 items-center">
+      <div
+        class="flex flex-1 justify-end gap-3 sm:gap-6 items-center text-zinc-300"
+      >
         <Link
           class="text-zinc-300 text-sm font-medium hover:text-zinc-200"
           href="/blog"
         >
           Blog
         </Link>
-        <Link
-          class="text-zinc-300 text-sm font-medium hover:text-zinc-200 px-4"
-          href="https://studio.axflow.dev"
-        >
-          Studio
-        </Link>
+
+        <div class="z-50 relative inline-block">
+          <button
+            id="dropdownHoverButton"
+            class="focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+            >Products <svg
+              class="w-2.5 h-2.5 ms-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div
+            id="dropdownHover"
+            class="z-50 hidden rounded-lg shadow w-32 bg-surface border border-surface absolute top-12 right-4"
+          >
+            <div
+              class="py-2 text-sm flex flex-col h-full w-full justify-end items-center"
+            >
+              <Link class="px-2 py-2" href="https://studio.axflow.dev">
+                Studio
+              </Link>
+              <Link href="/open-source" class="px-2 py-2">Open Source</Link>
+            </div>
+          </div>
+        </div>
+
         <div class="flex items-center">
           <a
             href="https://github.com/axflow/axflow"
