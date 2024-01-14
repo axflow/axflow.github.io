@@ -23,6 +23,7 @@ export default {
         zinc: {
           1000: "#121213",
         },
+        "bg-blue": "#0E0C14",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -65,6 +66,9 @@ export default {
       },
       fontFamily: {
         sans: ["Inter Variable", ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        "6xl": ["3.4375rem", "120%"],
       },
       animation: {
         blob: "blob 7s infinite",

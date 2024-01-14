@@ -2,10 +2,14 @@
 import Layout from "../layouts/Default.astro";
 import { Image } from "astro:assets";
 import studioDash from "../images/studio-hero.png";
+import loop from "../images/loop.png";
 import promptBentoControl from "../images/section-prompt-bento-control.png";
 import promptBentoPrompt from "../images/section-prompt-bento-prompt.png";
 import ChevronRight from "../components/icons/ChevronRight.astro";
 import XIcon from "../components/icons/X.astro";
+import Crosshair from "../components/icons/Crosshair.astro";
+import History from "../components/icons/History.astro";
+import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
 ---
 
 <script>
@@ -181,9 +185,10 @@ import XIcon from "../components/icons/X.astro";
         />
       </div>
 
-      <section class="w-full">
+      {/* PROMPTS SECTION */}
+      <section class="w-full flex flex-col items-center">
         <h2
-          class="via-zinc-200 bg-gradient-to-tr dark:from-white dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text py-16 md:py-20 md:mt-20 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl lg:text-6xl max-w-4xl tracking-tight"
+          class="via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text py-16 md:py-20 md:mt-20 text-center text-4xl sm:text-6xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow max-w-4xl tracking-tight"
         >
           The best prompt iteration tool <br />on the market
         </h2>
@@ -220,17 +225,88 @@ import XIcon from "../components/icons/X.astro";
           </div>
         </div>
       </section>
-    </div>
 
-    <footer class="shrink-0 grow-0 pb-6 pt-10">
-      <div
-        class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
-      >
-        <div class="flex flex-col items-center">
-          <p>&copy; 2023 Axilla, Inc. All rights reserved.</p>
-          <a class="underline" href="/privacy-policy">Privacy policy</a>
+      {/* DATA LOOP SECTION */}
+      <section class="w-full flex flex-col items-center">
+        <h2
+          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
+        >
+          A central place for your AI data loop
+        </h2>
+        <p class="max-w-md leading-7 text-center text-color-700 text-lg">
+          AI systems should improve when exposed to real-world scenarios. This
+          doesn’t happen automatically and your team needs tools to make sure
+          that system is improving with production experience.
+        </p>
+        <div
+          class="pt-8 sm:pt-16 grid grid-cols-1 sm:grid-cols-5 gap-20 items-center"
+        >
+          <div class="col-span-1 sm:col-span-3">
+            <Image src={loop} alt="Diagram of an AI application's data loop" />
+          </div>
+          <div class="col-span-1 sm:col-span-2 space-y-8">
+            <div class="flex items-center gap-6">
+              <div
+                class="bg-gradient-to-br from-teal-400 to-purple-700 rounded-full p-[1px]"
+              >
+                <div
+                  class="rounded-full px-4 py-1 bg-surface-50 text-sm font-medium"
+                >
+                  Offline tooling
+                </div>
+              </div>
+              <div class="text-color-700 text-sm font-medium">
+                Application framework
+              </div>
+            </div>
+            <div class="flex flex-col gap-6">
+              <div>
+                <div class="flex items-center gap-2">
+                  <Crosshair size="18" />
+                  <p class="font-medium">Detect undesired behavior</p>
+                </div>
+                <div class="text-color-700">
+                  Identify and understand undesired behavior from your AI
+                  system.
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center gap-2">
+                  <History size="18" />
+                  <p class="font-medium">Time travel</p>
+                </div>
+                <div class="text-color-700">
+                  Replay production traffic with changes to understand what
+                  would improve the system.
+                </div>
+              </div>
+
+              <div>
+                <div class="flex items-center gap-2">
+                  <GitCompareArrows size="18" />
+                  <p class="font-medium">Iterate</p>
+                </div>
+                <div class="text-color-700">
+                  Test prompts and config changes, evaluate their performance
+                  and release them to production.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </footer>
+
+        <footer class="shrink-0 grow-0 pb-6 pt-10">
+          <div
+            class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
+          >
+            <div class="flex flex-col items-center">
+              <p>&copy; 2023 Axilla, Inc. All rights reserved.</p>
+              <a class="underline" href="/privacy-policy">Privacy policy</a>
+            </div>
+          </div>
+        </footer>
+      </section>
+    </div>
   </main>
 </Layout>
