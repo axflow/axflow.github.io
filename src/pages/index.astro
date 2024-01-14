@@ -2,6 +2,8 @@
 import Layout from "../layouts/Default.astro";
 import { Image } from "astro:assets";
 import studioDash from "../images/studio-hero.png";
+import promptBentoControl from "../images/section-prompt-bento-control.png";
+import promptBentoPrompt from "../images/section-prompt-bento-prompt.png";
 import ChevronRight from "../components/icons/ChevronRight.astro";
 import XIcon from "../components/icons/X.astro";
 ---
@@ -61,10 +63,12 @@ import XIcon from "../components/icons/X.astro";
 </script>
 
 <Layout title="Axflow">
-  <main class="relative z-10 mx-auto flex flex-col justify-center px-8 lg:p-0">
+  <main
+    class="relative z-10 mx-auto flex flex-col justify-center px-2 sm:px-8 lg:p-0 max-w-[1045px]"
+  >
     <p
       id="infoToast"
-      class="absolute right-4 top-4 bg-surface border border-surface text-color rounded-xl px-4 py-2 h-16 hidden items-center justify-start"
+      class="absolute right-2 sm:right-14 top-4 bg-surface border border-surface text-color rounded-xl px-4 py-2 h-16 hidden items-center justify-start z-20"
     >
       This is an info
     </p>
@@ -132,7 +136,7 @@ import XIcon from "../components/icons/X.astro";
     <div class="flex shrink grow flex-col items-center justify-center">
       {/* start: hero-copy */}
       <h1
-        class="via-zinc-20 bg-gradient-to-tr dark:from-white dark:to-zinc-200 from-zinc-800 to-zinc-600 bg-clip-text pb-6 pt-10 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl md:pb-10 md:pt-32 lg:text-7xl"
+        class="via-zinc-200 bg-gradient-to-tr dark:from-white dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pb-6 pt-10 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl md:pb-10 md:pt-32 lg:text-7xl"
       >
         Take
         <span
@@ -176,6 +180,46 @@ import XIcon from "../components/icons/X.astro";
           height={650}
         />
       </div>
+
+      <section class="w-full">
+        <h2
+          class="via-zinc-200 bg-gradient-to-tr dark:from-white dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text py-16 md:py-20 md:mt-20 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl lg:text-6xl max-w-4xl tracking-tight"
+        >
+          The best prompt iteration tool <br />on the market
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+          <div
+            class="col-span-1 bg-surface-50 border border-surface rounded-round p-9 h-full flex flex-col items-center gap-6"
+          >
+            <h3 class="text-color text-2xl font-medium">
+              Full control of conversations
+            </h3>
+            <p class="leading-7 text-center text-color-700">
+              Import your production conversations, and replay them to
+              understand and improve your product’s behavior.
+            </p>
+            <Image
+              src={promptBentoControl}
+              alt="Screenshot of the Studio showcasing the control of chat messages"
+            />
+          </div>
+          <div
+            class="col-span-1 bg-surface-50 border border-surface rounded-round p-9 h-full flex flex-col items-center gap-6"
+          >
+            <h3 class="text-color text-2xl font-medium">
+              Perfect your prompts
+            </h3>
+            <p class="leading-7 text-center text-color-700">
+              Create or import your prompts, iterate on them, deploy and track
+              their performance without requiring engineering deploys.
+            </p>
+            <Image
+              src={promptBentoPrompt}
+              alt="Screenshot of the Studio showcasing the power of prompts"
+            />
+          </div>
+        </div>
+      </section>
     </div>
 
     <footer class="shrink-0 grow-0 pb-6 pt-10">
