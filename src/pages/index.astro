@@ -75,15 +75,15 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
 </script>
 
 <Layout title="Axflow">
+  <p
+    id="infoToast"
+    class="fixed right-2 sm:right-14 bottom-20 bg-surface-50 border border-surface text-color rounded-xl px-4 py-2 h-16 hidden items-center justify-start z-20"
+  >
+    This is an info
+  </p>
   <main
     class="relative z-10 mx-auto flex flex-col justify-center px-2 sm:px-8 lg:p-0 max-w-[1045px]"
   >
-    <p
-      id="infoToast"
-      class="absolute right-2 sm:right-14 top-4 bg-surface border border-surface text-color rounded-xl px-4 py-2 h-16 hidden items-center justify-start z-20"
-    >
-      This is an info
-    </p>
     <dialog
       class="transition-all allow-discrete duration-700 backdrop:backdrop-blur backdrop:bg-black backdrop:bg-opacity-50 bg-surface max-w-lg gap-4 border border-surface-50 bg-surface-50 p-6 shadow-lg duration-200 [state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-2xl w-[90%] md:w-full"
     >
@@ -237,17 +237,17 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
       {/* DATA LOOP SECTION */}
       <section class="w-full flex flex-col items-center">
         <h2
-          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
+          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-2xl tracking-tight"
         >
           A central place for your AI data loop
         </h2>
-        <p class="max-w-md leading-7 text-center text-color-700 text-lg">
+        <p class="max-w-xl leading-7 text-center text-color-700 text-lg">
           AI systems should improve when exposed to real-world scenarios. This
           doesn’t happen automatically and your team needs tools to make sure
-          that system is improving with production experience.
+          that your application is improving with production experience.
         </p>
         <div
-          class="pt-8 sm:pt-16 grid grid-cols-1 sm:grid-cols-5 gap-20 items-center"
+          class="pt-8 sm:pt-16 grid grid-cols-1 md:grid-cols-5 gap-20 items-center"
         >
           <div class="col-span-1 sm:col-span-3">
             <Image src={loop} alt="Diagram of an AI application's data loop" />
@@ -263,7 +263,11 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
                   Offline tooling
                 </div>
               </div>
-              <div class="text-color-700 text-sm font-medium">
+              <div
+                class="text-color-700 text-sm font-medium hover:cursor-pointer"
+                title="coming soon!"
+                data-tooltip-placement="top"
+              >
                 Application framework
               </div>
             </div>

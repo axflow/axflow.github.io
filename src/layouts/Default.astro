@@ -4,6 +4,7 @@ import "@fontsource-variable/inter";
 import "../styles/global.css";
 import { getAuthors } from "../authors";
 import Header from "../components/Header.astro";
+import { Tooltips } from "astro-tooltips";
 
 interface Props {
   title: string;
@@ -66,6 +67,7 @@ const authors = getAuthors(["nicholas", "ben"]);
       defer
       data-domain="axflow.dev"
       src="https://plausible.io/js/script.js"></script>
+    <Tooltips interactive={false} delay={[15, 2000]} arrow={false} />
   </head>
   <body
     class="relative bg-bg-blue selection:bg-teal-200 selection:text-zinc-900"

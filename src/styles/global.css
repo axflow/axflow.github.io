@@ -216,3 +216,11 @@
     background-position: -15px -15px;
   }
 }
+
+.tippy-box[data-theme="default"] {
+  @apply bg-surface-50;
+  @apply text-color;
+  @apply border-surface;
+  border-radius: var(--radius);
+  padding: 0.5rem;
+}
