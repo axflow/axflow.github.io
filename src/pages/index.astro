@@ -5,6 +5,10 @@ import studioDash from "../images/studio-hero.png";
 import loop from "../images/loop.png";
 import promptBentoControl from "../images/section-prompt-bento-control.png";
 import promptBentoPrompt from "../images/section-prompt-bento-prompt.png";
+import changesDeployment from "../images/changes-deployment.png";
+import naresh from "../images/testimonials/naresh.jpeg";
+import irwin from "../images/testimonials/irwin.jpeg";
+import Testimonial from "../components/Testimonial.astro";
 import ChevronRight from "../components/icons/ChevronRight.astro";
 import XIcon from "../components/icons/X.astro";
 import Crosshair from "../components/icons/Crosshair.astro";
@@ -32,6 +36,10 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
 
   const button = document.getElementById("CTAButton");
   button?.addEventListener("click", () => {
+    dialog?.showModal();
+  });
+  const button2 = document.getElementById("CTAButton2");
+  button2?.addEventListener("click", () => {
     dialog?.showModal();
   });
 
@@ -166,7 +174,7 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
       >
         <div
           id="CTAButton"
-          class="text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-color flex justify-center items-center border rounded-lg bg-button border-button py-2 pl-3 pr-2 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg"
+          class="mb-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg"
         >
           Join the Waitlist
           <ChevronRight className="h-5 w-5 ml-2" />
@@ -295,18 +303,108 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
             </div>
           </div>
         </div>
-
-        <footer class="shrink-0 grow-0 pb-6 pt-10">
-          <div
-            class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
-          >
-            <div class="flex flex-col items-center">
-              <p>&copy; 2023 Axilla, Inc. All rights reserved.</p>
-              <a class="underline" href="/privacy-policy">Privacy policy</a>
-            </div>
-          </div>
-        </footer>
       </section>
+
+      {/* Work as a team section */}
+      <section class="w-full flex flex-col items-center">
+        <h2
+          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
+        >
+          Work as a team
+        </h2>
+        <p class="max-w-2xl leading-7 text-center text-color-700 text-lg">
+          Studio was designed for product teams. Both engineers and
+          non-technical team members can use it to understand and improve your
+          AI application.
+        </p>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-16 items-center pt-4 sm:pt-10"
+        >
+          <div
+            class="col-span-1 h-full flex flex-col items-center justify-evenly"
+          >
+            <p class="leading-7 text-center text-color text-start text-lg">
+              Deploy changes to the system without engineering bottlenecks.
+            </p>
+
+            <p class="leading-7 text-center text-color-700 text-start text-lg">
+              Share prompts, openAI tools, and conversations with your team.
+            </p>
+
+            <p class="leading-7 text-center text-color-700 text-start text-lg">
+              Duplicate production data for session replay and time travel.
+            </p>
+
+            <p class="leading-7 text-center text-color-700 text-start text-lg">
+              Non-technical members contribute directly with prompt management,
+              evaluation, versioning and deployment.
+            </p>
+          </div>
+
+          <div class="col-span-1 p-10">
+            <Image
+              src={changesDeployment}
+              alt="Screenshot of the Studio showcasing the control of chat messages"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section class="w-full flex flex-col items-center">
+        <h2
+          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
+        >
+          Trusted by the best
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 sm:pt-10 items-start"
+        >
+          <Testimonial
+            text="When we started expanding support to multiple LLMs in our product, Axflow was invaluable in testing out the prompt and response variations across the different models all in one place."
+            image={naresh}
+            title="CTO, Codestory"
+            name="Naresh"
+          />
+          <Testimonial
+            text="After onboarding to Studio, both eng and non-eng folks started building and shipping prompts to production with confidence."
+            image={irwin}
+            title="CTO, Welling.ai"
+            name="Irwin"
+          />
+        </div>
+      </section>
+
+      {/* Last CTA*/}
+      <section class="w-full flex flex-col items-center">
+        <h2
+          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl tracking-tight"
+        >
+          Level up your AI flywheel
+        </h2>
+        <p class="max-w-2xl leading-7 text-center text-color-700 text-lg">
+          Be the first in line for the future of AI product development.
+        </p>
+        <div
+          id="CTAButton2"
+          class="my-10 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg"
+        >
+          Join the Waitlist
+          <ChevronRight className="h-5 w-5 ml-2" />
+        </div>
+      </section>
+
+      <footer class="shrink-0 grow-0 pb-6 pt-40">
+        <div
+          class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
+        >
+          <div class="flex flex-col items-center">
+            <p>&copy; 2023 Axilla, Inc. All rights reserved.</p>
+            <a class="underline" href="/privacy-policy">Privacy policy</a>
+          </div>
+        </div>
+      </footer>
     </div>
   </main>
 </Layout>
