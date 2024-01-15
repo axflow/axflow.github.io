@@ -1,0 +1,36 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  text: string;
+  title: string;
+  name: string;
+  image: ImageMetadata;
+}
+
+const { text, title, name, image } = Astro.props;
+---
+
+<div
+  class="col-span-1 bg-surface-50 border border-surface rounded-round p-6 flex flex-col items-center gap-6"
+>
+  <div class="flex flex-col w-full gap-6">
+    <p class="text-base text-color-700">
+      {text}
+    </p>
+    <div class="flex items-center gap-2.5">
+      <Image
+        src={image}
+        alt="Screenshot of the Studio showcasing the control of chat messages"
+        width={40}
+        height={40}
+        class="rounded-full"
+      />
+      <div class="flex flex-col items-start gap-1">
+        <p class="text-color font-medium">{name}</p>
+        <p class="text-xs">{title}</p>
+      </div>
+    </div>
+  </div>
+</div>
