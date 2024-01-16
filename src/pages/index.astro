@@ -58,11 +58,15 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
         class="flex flex-col items-center justify-center gap-x-12 gap-y-10 md:flex-row"
       >
         <div
-          id="CTAButton"
-          class="mb-2 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg"
+          class="bg-gradient-to-br from-teal-200 to-purple-600 p-[1px] rounded-lg mb-2 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg cursor-pointer focus-visible:outline-none"
         >
-          Join the Waitlist
-          <ChevronRight className="h-5 w-5 ml-2" />
+          <div
+            id="CTAButton"
+            class="text-base text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3"
+          >
+            Join the Waitlist
+            <ChevronRight className="h-5 w-5 ml-2" />
+          </div>
         </div>
       </div>
 
@@ -283,24 +287,28 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
           Be the first in line for the future of AI product development.
         </p>
         <div
-          id="CTAButton2"
-          class="my-10 text-base ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg"
+          class="bg-gradient-to-br from-teal-200 to-purple-600 p-[1px] rounded-lg my-6 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg cursor-pointer focus-visible:outline-none"
         >
-          Join the Waitlist
-          <ChevronRight className="h-5 w-5 ml-2" />
-        </div>
-      </section>
-
-      <footer class="shrink-0 grow-0 pb-6 pt-24">
-        <div
-          class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
-        >
-          <div class="flex flex-col items-center">
-            <p>&copy; 2024 Axilla, Inc. All rights reserved.</p>
-            <a class="underline" href="/privacy-policy">Privacy policy</a>
+          <div
+            id="CTAButton2"
+            class="text-base text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3"
+          >
+            Join the Waitlist
+            <ChevronRight className="h-5 w-5 ml-2" />
           </div>
         </div>
-      </footer>
+
+        <footer class="shrink-0 grow-0 pb-6 pt-24">
+          <div
+            class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
+          >
+            <div class="flex flex-col items-center">
+              <p>&copy; 2024 Axilla, Inc. All rights reserved.</p>
+              <a class="underline" href="/privacy-policy">Privacy policy</a>
+            </div>
+          </div>
+        </footer>
+      </section>
     </div>
   </main>
 </Layout>
