@@ -18,6 +18,7 @@ import ChevronRight from "./icons/ChevronRight.astro";
       const menu = document.getElementById(elementId);
       if (!menu) return;
       if (menu.dataset.open === "false") return;
+      // @ts-expect-error - I don't know how to get the type of the event target
       if (!menu.contains(e.target)) {
         menu.classList.add("hidden");
         menu.dataset.open = "false";
