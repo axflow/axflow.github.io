@@ -3,7 +3,58 @@ import ChevronDown from "./icons/ChevronDown.astro";
 import ChevronRight from "./icons/ChevronRight.astro";
 ---
 
-<header class="flex w-full justify-center px-2 pt-2">
+<script>
+  const setupStuff = () => {
+    const handleOutsideOfDropdownClick = (elementId: string, e: Event) => {
+      const menu = document.getElementById(elementId);
+      if (!menu) return;
+      if (menu.dataset.open === "false") return;
+      if (!menu.contains(e.target)) {
+        menu.classList.add("hidden");
+        menu.dataset.open = "false";
+        document.removeEventListener("click", (e) =>
+          handleOutsideOfDropdownClick(elementId, e),
+        );
+      }
+    };
+
+    const productsBtn = document.getElementById("products");
+    productsBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const menu = document.getElementById("productsMenu");
+      if (!menu) return;
+      menu.classList.toggle("hidden");
+      menu.dataset.open = menu.dataset.open === "true" ? "false" : "true";
+      document.addEventListener("click", (e) =>
+        handleOutsideOfDropdownClick("productsMenu", e),
+      );
+
+      // Make sure to close the other dropdown(s)
+      handleOutsideOfDropdownClick("companyMenu", e);
+    });
+
+    const companyBtn = document.getElementById("company");
+    companyBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const menu = document.getElementById("companyMenu");
+      if (!menu) return;
+      menu.classList.toggle("hidden");
+      menu.dataset.open = menu.dataset.open === "true" ? "false" : "true";
+      document.addEventListener("click", (e) =>
+        handleOutsideOfDropdownClick("companyMenu", e),
+      );
+
+      // Make sure to close the other dropdown(s)
+      handleOutsideOfDropdownClick("productsMenu", e);
+    });
+  };
+  document.addEventListener("astro:page-load", () => {
+    // This is needed to re-register after an astro view transition
+    setupStuff();
+  });
+</script>
+
+<header class="flex w-full justify-center px-2 pt-2 z-20">
   <div
     class="flex h-12 w-full items-center justify-between rounded-full border border-surface px-2 backdrop-blur-lg bg-surface container"
   >
@@ -22,20 +73,69 @@ import ChevronRight from "./icons/ChevronRight.astro";
           />
         </a>
         <div class="hidden sm:flex items-center gap-2">
-          <div
-            class="flex items-center hover:cursor-pointer gap-1 hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
-          >
-            <p>Products</p>
-            <ChevronDown className="w-4 h-4" />
+          <div class="relative">
+            <div
+              id="products"
+              class="flex items-center hover:cursor-pointer gap-1 hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
+            >
+              <p>Products</p>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+
+            <!-- Products dropdown menu -->
+            <div
+              id="productsMenu"
+              data-open="false"
+              class="absolute z-50 hidden rounded-lg shadow w-32 bg-surface border border-surface top-8 left-1/2 -translate-x-1/2"
+            >
+              <div class="z-50 text-sm flex flex-col h-full w-full">
+                <a
+                  class="rounded m-2 px-2 py-2 hover:text-color hover:bg-surface-100"
+                  href="https://studio.axflow.dev"
+                >
+                  Studio</a
+                >
+                <a
+                  class="rounded mx-2 mb-2 px-2 py-2 hover:text-color hover:bg-surface-100"
+                  href="/open-source">Open Source</a
+                >
+              </div>
+            </div>
           </div>
-          <div
-            class="flex items-center hover:cursor-pointer gap-1 hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
-          >
-            <p>Company</p>
-            <ChevronDown className="w-4 h-4" />
+
+          <!-- Unhide me when we have a careers and/or about/ page -->
+          <div class="relative hidden">
+            <div
+              id="company"
+              class="flex items-center hover:cursor-pointer gap-1 hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
+            >
+              <p>Company</p>
+              <ChevronDown className="w-4 h-4" />
+            </div>
+
+            <!-- Company dropdown menu -->
+            <div
+              id="companyMenu"
+              data-open="false"
+              class="absolute z-50 hidden rounded-lg shadow w-32 bg-surface border border-surface top-8 left-1/2 -translate-x-1/2"
+            >
+              <div class="text-sm flex flex-col h-full w-full">
+                <a
+                  class="rounded m-2 px-2 py-2 hover:text-color hover:bg-surface-100"
+                  href="/values"
+                >
+                  Values</a
+                >
+                <a
+                  class="rounded mx-2 mb-2 px-2 py-2 hover:text-color hover:bg-surface-100"
+                  href="/careers">Careers</a
+                >
+              </div>
+            </div>
           </div>
+          <!-- Unhide me when the docs aren't embarrassing -->
           <a
-            class="hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
+            class="hidden hover:text-color rounded-full px-3 py-1 hover:bg-surface-100"
             href="https://studio.axflow.dev/docs"
           >
             Docs
@@ -59,9 +159,9 @@ import ChevronRight from "./icons/ChevronRight.astro";
       </div>
 
       <div
-        class="hidden sm:flex flex-1 justify-end gap-3 sm:gap-6 items-center"
+        class="hidden md:flex flex-1 justify-end gap-3 sm:gap-6 items-center"
       >
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 text-sm">
           <div
             class="flex items-center hover:cursor-pointer gap-1 hover:text-color border border-surface rounded-full px-3 py-1 hover:bg-surface-100"
           >
