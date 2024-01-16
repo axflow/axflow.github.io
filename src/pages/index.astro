@@ -10,7 +10,6 @@ import naresh from "../images/testimonials/naresh.jpeg";
 import irwin from "../images/testimonials/irwin.jpeg";
 import Testimonial from "../components/Testimonial.astro";
 import ChevronRight from "../components/icons/ChevronRight.astro";
-import XIcon from "../components/icons/X.astro";
 import Crosshair from "../components/icons/Crosshair.astro";
 import History from "../components/icons/History.astro";
 import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
@@ -18,21 +17,6 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
 
 <script>
   const dialog = document.querySelector("dialog");
-
-  const showToast = (text: string) => {
-    const toast = document.getElementById("infoToast");
-    if (!toast) {
-      return;
-    }
-    toast.classList.add("flex");
-    toast.classList.remove("hidden");
-    toast.innerHTML = text;
-
-    setTimeout(() => {
-      toast?.classList.add("hidden");
-      toast?.classList.remove("flex");
-    }, 4000);
-  };
 
   const button = document.getElementById("CTAButton");
   button?.addEventListener("click", () => {
@@ -42,109 +26,12 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
   button2?.addEventListener("click", () => {
     dialog?.showModal();
   });
-
-  const closeButton = document.getElementById("closeModalBtn");
-  closeButton?.addEventListener("click", () => {
-    dialog?.close();
-  });
-
-  const submitFormBtn = document.getElementById("formSubmit");
-
-  submitFormBtn?.addEventListener("click", async (e) => {
-    e.preventDefault();
-    // @ts-expect-error we know the div is there
-    const email = document.querySelector("input[name=email]")?.value;
-    // @ts-expect-error we know the div is there
-    const name = document.querySelector("input[name=name]")?.value;
-    const response = await fetch("https://studio.axflow.dev/waitlist/join", {
-      method: "POST",
-      body: JSON.stringify({ email, name }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    response.json().then((data) => {
-      if (data.error && data.error.message.includes("duplicate key")) {
-        showToast("You're already on the waitlist!");
-      } else {
-        showToast("You're on the waitlist!");
-      }
-    });
-    dialog?.close();
-  });
 </script>
 
 <Layout title="Axflow">
-  <p
-    id="infoToast"
-    class="fixed right-2 sm:right-14 bottom-20 bg-surface-50 border border-surface text-color rounded-xl px-4 py-2 h-16 hidden items-center justify-start z-20"
-  >
-    This is an info
-  </p>
   <main
     class="mx-auto flex flex-col justify-center px-2 sm:px-8 lg:p-0 max-w-[1045px] z-0 mt-20 md:mt-32"
   >
-    <dialog
-      class="transition-all allow-discrete duration-700 backdrop:backdrop-blur backdrop:bg-black backdrop:bg-opacity-50 bg-surface max-w-lg gap-4 border border-surface-50 bg-surface-50 p-6 shadow-lg duration-200 [state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-2xl w-[90%] md:w-full"
-    >
-      <div
-        class="flex flex-col items-center justify-center gap-x-12 gap-y-10 md:flex-row"
-      >
-        <div class="p-6 rounded-lg relative">
-          <button
-            id="closeModalBtn"
-            class="absolute top-1 h-10 w-10 right-1 text-lg text-white rounded-full flex items-center justify-center bg-button border border-button"
-          >
-            <XIcon />
-          </button>
-          <div class="text-3xl pb-2 text-color">
-            Join the{" "}
-            <span class="text-color-primary font-mono italic tracking-tighter"
-              >waitlist</span
-            >
-          </div>
-
-          <p class="text-color-700 pb-4">
-            The line gets longer by the second. We&apos;ll send you an invite
-            when it&apos;s your turn!
-          </p>
-          <form method="dialog" class="space-y-2">
-            <div class="relative w-full">
-              <input
-                name="name"
-                autofocus
-                autocomplete="off"
-                type="text"
-                placeholder="Full name"
-                class="text-color flex h-10 w-full rounded-lg border border-input bg-surface-50 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-color-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-              <div
-                class="absolute text-xs font-medium text-color-400 font-mono italic right-4 top-1/2 -translate-y-1/2 pointer-events-none"
-              >
-                optional
-              </div>
-            </div>
-
-            <div class="relative w-full">
-              <input
-                name="email"
-                autocomplete="off"
-                type="email"
-                placeholder="Email"
-                class="flex h-10 w-full text-color rounded-lg border border-input bg-surface-50 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-color-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              />
-            </div>
-            <button
-              id="formSubmit"
-              value="default"
-              class="text-color flex justify-center items-center gap-x-2 border rounded-lg bg-button border-button py-2 pl-3 pr-4 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg w-full"
-              >Let me in!</button
-            >
-          </form>
-        </div>
-      </div>
-    </dialog>
-
     <div class="relative flex flex-col items-center">
       {/* start: hero-copy */}
       <h1

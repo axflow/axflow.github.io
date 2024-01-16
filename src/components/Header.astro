@@ -5,6 +5,15 @@ import ChevronRight from "./icons/ChevronRight.astro";
 
 <script>
   const setupStuff = () => {
+    // Register "waitlist" CTA
+    const dialog = document.querySelector("dialog");
+
+    const button = document.getElementById("headerCTA");
+    button?.addEventListener("click", () => {
+      dialog?.showModal();
+    });
+
+    // Register dropdown interactions
     const handleOutsideOfDropdownClick = (elementId: string, e: Event) => {
       const menu = document.getElementById(elementId);
       if (!menu) return;
@@ -162,18 +171,31 @@ import ChevronRight from "./icons/ChevronRight.astro";
         class="hidden md:flex flex-1 justify-end gap-3 sm:gap-6 items-center"
       >
         <div class="flex items-center gap-2 text-sm">
+          <a
+            href="https://github.com/axflow/axflow"
+            class="hover:bg-button p-0 sm:p-2 rounded-full"
+          >
+            <img
+              src="/github-mark-white.png"
+              alt="GitHub logo"
+              width={18}
+              height={18}
+            />
+          </a>
           <div
+            id="headerCTA"
             class="flex items-center hover:cursor-pointer gap-1 hover:text-color border border-surface rounded-full px-3 py-1 hover:bg-surface-100"
           >
             <p>Join the waitlist</p>
             <ChevronRight className="w-4 h-4" />
           </div>
-          <div
+          <a
+            href="https://studio.axflow.dev/chats"
             class="flex items-center hover:cursor-pointer gap-1 hover:text-color rounded-full px-3 py-1 bg-surface-100 hover:bg-surface-200"
           >
             <p>Sign in</p>
             <ChevronRight className="w-4 h-4" />
-          </div>
+          </a>
         </div>
       </div>
     </nav>

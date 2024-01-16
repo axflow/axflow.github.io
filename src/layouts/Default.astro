@@ -4,6 +4,7 @@ import "@fontsource-variable/inter";
 import "../styles/global.css";
 import { getAuthors } from "../authors";
 import Header from "../components/Header.astro";
+import WaitlistDialog from "../components/WaitlistDialog.astro";
 import { Tooltips } from "astro-tooltips";
 
 interface Props {
@@ -77,6 +78,7 @@ const authors = getAuthors(["nicholas", "ben"]);
     >
     </div>
     <Header />
+    <WaitlistDialog />
     <slot />
   </body>
 </html>

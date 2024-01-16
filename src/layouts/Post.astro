@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import { getAuthors } from "../authors";
 import Header from "../components/Header.astro";
+import WaitlistDialog from "../components/WaitlistDialog.astro";
 
 const { frontmatter } = Astro.props;
 const url = Astro.url.toString();
@@ -63,6 +64,7 @@ const authors = getAuthors(frontmatter.authors);
     >
     </div>
     <Header />
+    <WaitlistDialog />
     <main class="z-10 flex md:justify-center pb-40">
       <article
         class="prose prose-invert px-4 lg:px-0 break-word z-50 selection:bg-teal-200 selection:text-zinc-900"
