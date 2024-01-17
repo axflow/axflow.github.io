@@ -8,6 +8,7 @@ import promptBentoPrompt from "../images/section-prompt-bento-prompt.png";
 import changesDeployment from "../images/changes-deployment.png";
 import naresh from "../images/testimonials/naresh.jpeg";
 import irwin from "../images/testimonials/irwin.jpeg";
+import chris from "../images/testimonials/chris.jpeg";
 import Testimonial from "../components/Testimonial.astro";
 import ChevronRight from "../components/icons/ChevronRight.astro";
 import Crosshair from "../components/icons/Crosshair.astro";
@@ -259,7 +260,7 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
           Trusted by the best
         </h2>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 sm:pt-10 items-start"
+          class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-4 sm:pt-10 items-start"
         >
           <Testimonial
             text="When we started expanding support to multiple LLMs in our product, Axflow was invaluable in testing out the prompt and response variations across the different models all in one place."
@@ -273,9 +274,14 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
             title="CTO, Welling.ai"
             name="Irwin"
           />
+          <Testimonial
+            text="Studio has been instrumental for our team. Rapid prototyping and refining prompts is seamless. A key advantage is its accessibility, allowing non-technical team members to be equally efficient in the process. Highly recommended!"
+            image={chris}
+            title="Senior Software Engineer, Double"
+            name="Chris"
+          />
         </div>
       </section>
-
       {/* Last CTA*/}
       <section class="w-full flex flex-col items-center">
         <h2
