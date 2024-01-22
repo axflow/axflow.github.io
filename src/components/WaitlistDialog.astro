@@ -41,10 +41,10 @@ import XIcon from "../components/icons/X.astro";
       },
     });
     response.json().then((data) => {
-      if (data.error && data.error.message.includes("duplicate key")) {
-        showToast("You're already on the waitlist!");
-      } else {
+      if (data.success) {
         showToast("You're on the waitlist!");
+      } else {
+        showToast(data.error.message);
       }
     });
     dialog?.close();
