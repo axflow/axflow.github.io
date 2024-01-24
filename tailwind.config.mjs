@@ -23,7 +23,7 @@ export default {
         zinc: {
           1000: "#121213",
         },
-        "bg-blue": "#0E0C14",
+        "bg-blue": "#05040A",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
