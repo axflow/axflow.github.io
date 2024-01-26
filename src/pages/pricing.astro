@@ -33,23 +33,18 @@ const frequencies: Frequency[] = [
   { value: "monthly", label: "Monthly", priceSuffix: "/month" },
   { value: "annually", label: "Annually", priceSuffix: "/year" },
 ];
+
+const developerTier = {
+  name: "Developer",
+  id: "tier-developer",
+  href: "#",
+  price: { monthly: "$100", annually: "$192" },
+  description: "A good starter plan for small teams starting their AI journey.",
+  features: ["Access to all openAI models", "Up to 2 team members"],
+  mostPopular: false,
+  cta: "Get started",
+};
 const tiers: Tier[] = [
-  {
-    name: "Developer",
-    id: "tier-developer",
-    href: "#",
-    price: { monthly: "$100", annually: "$192" },
-    description:
-      "A good starter plan for small teams starting their AI journey.",
-    features: [
-      "Access to all openAI models",
-      "Access to all anthropic models",
-      "Access to all cohere models",
-      "Up to 5 team members",
-    ],
-    mostPopular: false,
-    cta: "Start for free",
-  },
   {
     name: "Startup",
     id: "tier-startup",
@@ -59,8 +54,8 @@ const tiers: Tier[] = [
     features: [
       "Access to all models",
       "Unlimited team members",
-      "Access to evaluations",
-      "Access to experiments",
+      "Unlimited evaluations",
+      "Unlimited experiments",
       "Dedicated support",
     ],
     mostPopular: true,
@@ -75,8 +70,7 @@ const tiers: Tier[] = [
       "All features of Startup, plus:",
       "Deploy custom models",
       "On-premise deployment of Studio",
-      "Unlimited team members",
-      "12h SLA Dedicated support",
+      "24h SLA Dedicated support",
     ],
     mostPopular: false,
     cta: "Contact sales",
