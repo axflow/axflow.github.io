@@ -35,7 +35,7 @@ export const components = { a: Link };
   </span>
 </div>
 
-Navigating the worlds of GPT-4, LLaMa and their AI buddies can feel a bit like trying to talk sense into a super-smart but somewhat scatterbrained friend. They're brimming with potential, but getting them to focus and deliver exactly what you're after isn’t easy. You've probably been there – sitting with your team, brainstorming how to get an LLM to generate outputs that don't make you want to pull your hair out. Your company’s vision relies on creating an app that always does the right thing, instead of being unpredictable in many edge cases. It can be a little daunting to sit in front of that empty text box to craft your prompt, but adopting some commonly used techniques can help! Let's dive into some straightforward prompting techniques that'll help you get the most out of LLMs faster.
+Navigating the world of GPT-4, LLaMa and their AI buddies can feel a bit like trying to talk sense into a super-smart but somewhat scatterbrained friend. They're brimming with potential, but getting them to focus and deliver exactly what you're after isn’t easy. You've probably been there – sitting with your team, brainstorming how to get an LLM to generate outputs that don't make you want to pull your hair out. Your company’s vision relies on creating an app that always does the right thing, instead of being unpredictable with many edge cases. It can be a little daunting to sit in front of that empty text box to craft your prompt, but adopting some commonly used techniques can help! Let's dive into some straightforward prompting techniques that'll help you get the most out of LLMs faster.
 
 ### **Tackling Prompting Head-On**
 
@@ -72,15 +72,15 @@ It’s very factual and does a good job at summarizing, but it’s not particula
 
 ### **2. Few-Shot Learning: The Quick Tutorial**
 
-Think of few-shot learning as giving your AI a crash course or a quick peek at your notes before a test. You're showing it a few examples that say, "This is what I'm looking for." It's pretty handy because it helps set expectations and gives the AI a nudge in the right direction, especially when you're after something specific. Few-shot prompting is generally under-estimated but can yield incredibly strong results. If it’s not working very well the first time, try giving different examples, or more, don’t give up right away.
+Think of few-shot learning as giving your AI a crash course or a quick peek at your notes before a test. You're showing it a few examples that say, "This is what I'm looking for." It's pretty handy because it helps set expectations and gives the AI a nudge in the right direction, especially when you're after something specific. Few-shot prompting is generally under-estimated but can yield incredibly strong results. If it’s not working very well the first time, try adding more or increasing the variance of examples.
 
 _Example:_
 Going back to our app, a few-shot prompt might look like:
 
-- **Input:** "Here are three examples where I summarize tech articles into 100-word snippets. \{examples\}. Now, summarize this article: \{tech_article\} into a 100-word snippet."
+- **Input:** "Here are three examples where I summarize tech articles into 100-word snippets. {examples}. Now, summarize the following tech article into a 100-word snippet: {tech_article}"
 - **GPT-4’s Task:** Follow the pattern to generate a similar summary for the provided article.
 
-This approach helps GPT-4 grasp the task through context, making it a brilliant match for teams without a coding guru on board.
+This approach helps GPT-4 grasp the task through context, making it an effective tool for teams without a coding guru on board.
 
 For our example, I picked three tech article summaries [here](https://www.forbes.com/sites/peterhigh/2023/01/09/top-ten-tech-articles-of-2022/?sh=a4a9d754cee2).
 
@@ -96,7 +96,7 @@ Here is what we get:
   <span class="mx-auto text-center opacity-80 text-sm">Few-shot response</span>
 </div>
 
-The style improves a lot with few-shot learning.
+Here, the style is much better with few-shot learning.
 
 ### **3. Chain-of-Thought Prompting: Connecting the Dots**
 
@@ -120,7 +120,7 @@ For our tech article summarizer app:
   </span>
 </div>
 
-Chain-of-thought prompting ensures that the summary focuses on the most important points of the article. We can see that we lost a bit of the nice style that we achieved with few-shots learning by copying other examples. We can address this by combining the two prompting techniques together.
+Chain-of-thought prompting ensures that the summary focuses on the most important points of the article. We can see that we lost a bit of the nice style that we achieved with few-shot learning by copying other examples. We can address this by combining the two prompting techniques together.
 
 ### **4. Analogous Reasoning Prompting**
 
@@ -148,7 +148,7 @@ Analogous Reasoning is quite powerful. You can tell that the style is very diffe
 
 ### **5. Prompt Chaining**
 
-Think of prompt chaining as creating a storyline for GPT-4 to follow, where each prompt leads naturally to the next, building a comprehensive narrative or answer piece by piece. It's especially useful for tasks requiring a series of logically connected outputs. Prompt Chaining is also powerful because it’s a form of focus: focus the whole LLM brain on one task. You can think of LLMs as having intelligence “per context token”. So if you ask the LLM to do too much in one go, your dividing it’s total attention/intelligence and getting poorer results.
+Think of prompt chaining as creating a storyline for GPT-4 to follow, where each prompt leads naturally to the next, building a comprehensive narrative or answer piece by piece. It's especially useful for tasks requiring a series of logically connected outputs. Prompt Chaining is also powerful because it’s a form of focus: focus the whole LLM brain on one task. You can think of LLMs as having intelligence “per context token”. So if you ask the LLM to do too much in one go, you’re dividing its total attention/intelligence which typically means weaker results.
 
 _Example:_
 For the summarizer app,
