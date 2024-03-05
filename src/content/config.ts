@@ -7,7 +7,7 @@ const postsCollection = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      authors: z.array(z.enum(["ben", "nicholas"])),
+      authors: z.array(z.enum(["ben", "nicholas", "zach"])),
       tags: z.array(z.string()),
       published: z.date().optional(),
       cover: image().refine((img) => img.width >= 1080, {

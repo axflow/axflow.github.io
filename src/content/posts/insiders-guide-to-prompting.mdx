@@ -1,0 +1,245 @@
+---
+title: The Insider’s Guide to LLM Prompting Mastery
+description: A comprehensive guide to mastering the art of prompting large language models (LLMs) like GPT-4
+authors:
+  - zach
+tags:
+  - AI
+  - LLM
+  - Prompting
+published: 2024-03-05T00:00:00.000Z
+cover: "../../images/prompting-master/cover.png"
+---
+
+import { Image } from "astro:assets";
+import analogous from "../../images/prompting-master/analogous-reasoning.png";
+import confused from "../../images/prompting-master/confused-eng.png";
+import fewShot from "../../images/prompting-master/few-shot.png";
+import chainOfThought from "../../images/prompting-master/chain-of-thought.png";
+import promptChaining from "../../images/prompting-master/prompt-chaining.png";
+import reversalPrompting from "../../images/prompting-master/reversal-prompting.png";
+import zeroShot from "../../images/prompting-master/zero-shot.png";
+import embedded from "../../images/prompting-master/embedded.png";
+import Link from "../../components/Link.astro";
+export const components = { a: Link };
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={confused}
+    alt="An image I made using Midjourney and their --tile parameter."
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Having fun working on prompts?
+  </span>
+</div>
+
+Navigating the worlds of GPT-4, LLaMa and their AI buddies can feel a bit like trying to talk sense into a super-smart but somewhat scatterbrained friend. They're brimming with potential, but getting them to focus and deliver exactly what you're after isn’t easy. You've probably been there – sitting with your team, brainstorming how to get an LLM to generate outputs that don't make you want to pull your hair out. Your company’s vision relies on creating an app that always does the right thing, instead of being unpredictable in many edge cases. It can be a little daunting to sit in front of that empty text box to craft your prompt, but adopting some commonly used techniques can help! Let's dive into some straightforward prompting techniques that'll help you get the most out of LLMs faster.
+
+### **Tackling Prompting Head-On**
+
+Prompting isn’t just about throwing words into the AI void and hoping for the best. It's more like a strategic game, where your prompts need to be well-thought-out to get the AI to produce what you want. And then producing it every time, not just sometimes. Here’s a look at the main strategies in our playbook:
+
+### **1. Zero-Shot Learning: Going in Blind**
+
+Zero-shot learning is like asking your friend to guess what movie you're thinking of with absolutely no hints. Sounds tough, right? But here, you're banking on the AI's built-in smarts to figure out what you want based on its vast pre-training. It's hit or miss, but when it hits, it feels like magic.
+
+_Example:_
+Let’s say you’re building an app to summarize tech articles. A zero-shot prompt would be straight to the point:
+
+- **Input:** "Summarize the following tech article into a 100-word snippet: \{tech_article\}."
+- **GPT-4’s Task:** Leveraging its pre-existing knowledge, GPT-4 dives straight into summarization.
+
+It’s a bit of a gamble but can streamline the process when GPT-4 nails it.
+
+To show the results we get with different prompting techniques, I’m asking GPT-4 to summarize this [article](https://www.technologyreview.com/2024/02/15/1088401/openai-amazing-new-generative-ai-video-model-sora/) published in the MIT Technology Review covering Sora’s release. Here is what we get with our example with zero-shot learning:
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={zeroShot}
+    alt="An image I made using Midjourney and their --tile parameter."
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    {" "}
+    Zero-shot response
+  </span>
+</div>
+
+It’s very factual and does a good job at summarizing, but it’s not particularly interesting to read.
+
+### **2. Few-Shot Learning: The Quick Tutorial**
+
+Think of few-shot learning as giving your AI a crash course or a quick peek at your notes before a test. You're showing it a few examples that say, "This is what I'm looking for." It's pretty handy because it helps set expectations and gives the AI a nudge in the right direction, especially when you're after something specific. Few-shot prompting is generally under-estimated but can yield incredibly strong results. If it’s not working very well the first time, try giving different examples, or more, don’t give up right away.
+
+_Example:_
+Going back to our app, a few-shot prompt might look like:
+
+- **Input:** "Here are three examples where I summarize tech articles into 100-word snippets. \{examples\}. Now, summarize this article: \{tech_article\} into a 100-word snippet."
+- **GPT-4’s Task:** Follow the pattern to generate a similar summary for the provided article.
+
+This approach helps GPT-4 grasp the task through context, making it a brilliant match for teams without a coding guru on board.
+
+For our example, I picked three tech article summaries [here](https://www.forbes.com/sites/peterhigh/2023/01/09/top-ten-tech-articles-of-2022/?sh=a4a9d754cee2).
+
+Here is what we get:
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={fewShot}
+    alt="An image I made using Midjourney and their --tile parameter."
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">Few-shot response</span>
+</div>
+
+The style improves a lot with few-shot learning.
+
+### **3. Chain-of-Thought Prompting: Connecting the Dots**
+
+Some tasks are complicated and need a bit more guidance. Chain-of-thought prompting is like breaking down directions into bite-sized steps, so your friend doesn’t end up lost. You're basically saying, "First, do this. Then, think about that." It helps keep the AI on track and can be a game-changer for more complex requests. Because we ask the LLM to “think” before it acts, it ends up emphasizing the key tokens for itself. This leads to better results and importantly more consistency when reusing the same prompt, which is key if you are building an app.
+
+_Example:_
+For our tech article summarizer app:
+
+- **Input:** "First, identify the main themes of this tech article: \{tech_article\}. Next, list the key points related to each theme. Finally, use those points to create a 100-word summary."
+- **GPT-4’s Task:** This sequential approach helps GPT-4 systematically tackle complex tasks by following a logical path.
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={chainOfThought}
+    alt="Chain of thought response"
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Chain-of-thought response
+  </span>
+</div>
+
+Chain-of-thought prompting ensures that the summary focuses on the most important points of the article. We can see that we lost a bit of the nice style that we achieved with few-shots learning by copying other examples. We can address this by combining the two prompting techniques together.
+
+### **4. Analogous Reasoning Prompting**
+
+When you're trying to get GPT-4 to wrap its brain around something complex, drawing parallels to simpler, more familiar concepts can be a game-changer. Analogous reasoning is all about making connections between the task at hand and something the model knows well.
+
+_Example:_
+Building on our tech article summarizer app,
+
+- **Input:** "Imagine summarizing a tech article is like creating a trailer for a movie. The goal is to capture the essence in a minute or less. Now, create a 'trailer' for this tech article, but remember that this is not an actual trailer, this is meant to be a text only 100-word snippet with no scripting notes : \{tech_article\}."
+- **GPT-4’s Task:** This prompt encourages GPT-4 to apply the concept of condensing a story to summarizing an article, utilizing its ability to understand and generate based on analogies.
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={analogous}
+    alt="Analogous reasoning response"
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Analogous reasoning response
+  </span>
+</div>
+
+Analogous Reasoning is quite powerful. You can tell that the style is very different from what we obtained with other techniques. I would note that GPT-4 first gave me a transcript of a trailer, and I had to add a constraint “this is meant to be a text only 100-word snippet with no scripting notes”. Like often when crafting prompts, it’s all about experimenting and evaluating your results.
+
+### **5. Prompt Chaining**
+
+Think of prompt chaining as creating a storyline for GPT-4 to follow, where each prompt leads naturally to the next, building a comprehensive narrative or answer piece by piece. It's especially useful for tasks requiring a series of logically connected outputs. Prompt Chaining is also powerful because it’s a form of focus: focus the whole LLM brain on one task. You can think of LLMs as having intelligence “per context token”. So if you ask the LLM to do too much in one go, your dividing it’s total attention/intelligence and getting poorer results.
+
+_Example:_
+For the summarizer app,
+
+- **Input First**: "Identify the main themes in this article: \{tech_article\}."
+- **GPT-4’s Task First**: Outputs the main themes.
+- **Input Next**: "For each theme identified, list the key points."
+- **GPT-4’s Task Next**: It lists key points based on the themes it previously identified.
+- **Final Input**: "Now, summarize these points into a 100-word snippet."
+- **GPT-4’s Final Task**: Consolidates the points into a summary, following the structured path laid out.
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={promptChaining}
+    alt="Prompt chaining response"
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Prompt Chaining response
+  </span>
+</div>
+
+In our case we get a good result with this technique, because we already know what to look for in a great tech summary, so we can tell GPT-4 to focus on this.
+
+### **6. Reversal Prompting**
+
+Sometimes, teaching by counterexample can be powerful. Reversal prompting involves asking GPT-4 not just how to do something, but also how not to do it. This dual perspective can enhance its understanding and output accuracy.
+
+_Example:_
+For our app,
+
+- **Input:** "When summarizing a tech article into a 100-word snippet, what should you include, and what common mistakes should you avoid? Use this tech article as an example: \{tech_article\}."
+- **GPT-4’s Task:** By clarifying both the do's and don’ts, GPT-4’s summaries can become more refined and focused.
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={reversalPrompting}
+    alt="Reversal prompting response"
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Reversal prompting response
+  </span>
+</div>
+
+Reversal prompting is a bit like the exact opposite of prompt chaining. We don’t need to provide precise instructions to GPT-4. We simply ask it to clarify how to get to a good result.
+
+### **7. Embedded Instruction Prompting**
+
+Consider embedding the instruction directly into the task to make guidelines crystal clear. This method involves infusing the prompt with both the task objective and the style or format requirements.
+
+_Example:_
+With our app in mind,
+
+- **Input:** "Create a captivating 100-word summary of this tech article \{tech_article\} that could be posted on LinkedIn. Make it engaging and informative."
+- **GPT-4’s Task:** This prompt directs GPT-4 to not just summarize but also tailor the content for social media engagement, providing both task and context.
+
+<div class="flex flex-col mx-auto">
+  <Image
+    class="mx-auto rounded-sm mb-0"
+    src={embedded}
+    alt="Embedded instruction prompting response"
+    width="550"
+  />
+  <span class="mx-auto text-center opacity-80 text-sm">
+    Embedded instruction response
+  </span>
+</div>
+
+Here we save a lot of time getting the right tone, by asking to craft a LinkedIn post from the beginning.
+
+### **Axflow Studio: Your Prompting Playground and Evaluation platform**
+
+Now, what if there was a place where you could mix, match, and play with all of these prompting techniques without breaking a sweat? Meet [Axflow Studio](https://axflow.dev/), your creative workshop for prompt crafting and hardening. It's where you get to experiment and refine, learning how to master LLMs behavior to align it with your objectives. And the best part? It’s designed for everyone, empowering your whole team — coding experts and non-technical folks alike.
+
+### **Weighing Your Options**
+
+Every prompting technique can be very effective for a particular use case and not give you the results you expected for another one. Axflow Studio gives you the tools to run experiments and evaluate the results, so you can play around with different ideas and avoid the potential pitfalls of each technique. When developing an AI app, running a lot of experiments fast is key. To help you get started, here are some high level pros and cons to pick the prompting technique that may work best for your use case.
+
+| Prompting Technique            | Pros                                                                                                                | Cons                                                                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Zero-Shot Learning             | Quick to implement, no need for examples. Leverages the model's broad pre-training.                                 | Unpredictable results, especially for nuanced or complex tasks. May require more trial and error to achieve desired outcomes.                    |
+| Few-Shot Learning              | Provides context and examples, improving the model's accuracy for specific tasks.                                   | Requires gathering and selecting high-quality, relevant examples. May not generalize well for tasks outside the examples provided.               |
+| Chain-of-Thought Prompting     | Breaks complex tasks into manageable steps, improving clarity and accuracy.                                         | Lengthy prompt design. Requires clear understanding of the logical steps involved, potentially increasing initial setup time.                    |
+| Analogous Reasoning Prompting  | Leverages model's existing knowledge for new tasks by drawing parallels, potentially simplifying complex concepts.  | Finding effective analogies can be challenging. Not all concepts lend themselves to straightforward analogies.                                   |
+| Prompt Chaining                | Builds information incrementally, allowing for detailed and precise outputs. Facilitates handling multi-step tasks. | Requires well-thought-out sequence design. The success of later prompts depends on the accuracy of earlier responses, risking error propagation. |
+| Reversal Prompting             | Offers comprehensive understanding by outlining what to do and what to avoid, enhancing precision.                  | May lengthen prompts and complicate response analysis, as it provides both correct and incorrect approaches.                                     |
+| Embedded Instruction Prompting | Directly integrates task objectives and requirements, ensuring clarity and focused results.                         | Might restrict the model’s creative or broader capabilities due to tightly specified instructions, potentially missing out on richer content.    |
+
+### **Wrapping Up**
+
+Getting AI to spit out exactly what you need doesn't have to feel like deciphering an ancient code. With the right prompting techniques and Axflow Studio in your toolkit, you'll be able to harness the full power of LLMs and manage their weird behaviors. Whether you’re just getting started with your project or are already doing a lot of experiments, remember: a little creativity and patience go a long way. [Book your Axflow Studio demo now](https://www.notion.so/Blog-post-The-Insider-s-Guide-to-LLM-Prompting-Mastery-81a2d3f0b740460f806cb216dcc82e09?pvs=21) \***\*and let your LLM app self-improve while you sleep**.\*\* Happy prompting, folks!

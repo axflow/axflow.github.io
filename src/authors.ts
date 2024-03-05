@@ -20,6 +20,13 @@ const authors: Record<string, AuthorType> = {
       "https://pbs.twimg.com/profile_images/1686425375143006208/foua8ceA_400x400.jpg",
     website: "https://benreinhart.com",
   },
+  zach: {
+    name: "Zach Esmili",
+    handle: "zesmili",
+    avatar:
+      "https://ca.slack-edge.com/T05887Z04CT-U06G4A180MQ-5bb77f27677d-512",
+    website: "https://www.linkedin.com/in/zacharie-esmili/",
+  },
 };
 
 function getAuthorOrThrow(name: string): AuthorType {
