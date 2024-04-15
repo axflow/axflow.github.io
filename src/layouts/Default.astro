@@ -68,8 +68,10 @@ const authors = getAuthors(["nicholas", "ben", "zach"]);
       class="bg-dot-grid absolute left-0 top-0 h-screen w-full bg-absolute -z-10"
     >
     </div>
-    <Header />
-    <WaitlistDialog />
-    <slot />
+    <div class="h-full flex flex-col">
+      <Header />
+      <WaitlistDialog />
+      <slot />
+    </div>
   </body>
 </html>
