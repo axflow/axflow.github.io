@@ -1,20 +1,6 @@
 ---
 import Layout from "../layouts/Default.astro";
-import { Image } from "astro:assets";
-import studioDash from "../images/studio-hero.png";
-import loop from "../images/loop.png";
-import promptBentoControl from "../images/section-prompt-bento-control.png";
-import promptBentoPrompt from "../images/section-prompt-bento-prompt.png";
-import changesDeployment from "../images/changes-deployment.png";
-import naresh from "../images/testimonials/naresh.jpeg";
-import irwin from "../images/testimonials/irwin.jpeg";
-import flo from "../images/testimonials/flo.jpeg";
-import Testimonial from "../components/Testimonial.astro";
-import Emphasis from "../components/Emphasis.astro";
 import ChevronRight from "../components/icons/ChevronRight.astro";
-import Crosshair from "../components/icons/Crosshair.astro";
-import History from "../components/icons/History.astro";
-import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
 ---
 
 <script>
@@ -24,43 +10,27 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
   button?.addEventListener("click", () => {
     dialog?.showModal();
   });
-  const button2 = document.getElementById("CTAButton2");
-  button2?.addEventListener("click", () => {
-    dialog?.showModal();
-  });
 </script>
 
 <Layout title="Axflow">
   <main
-    class="mx-auto flex flex-col justify-center px-2 sm:px-8 lg:p-0 max-w-[1045px] z-0 mt-20 md:mt-32"
+    class="mx-auto flex flex-col justify-center h-full px-2 sm:px-8 lg:p-0 max-w-[1045px] z-0"
   >
     <div class="relative flex flex-col items-center">
       {/* start: hero-copy */}
       <h1
         class="via-zinc-200 bg-gradient-to-tr dark:from-white dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pb-6 md:pb-10 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl lg:text-7xl"
       >
-        Build
+        Amplify your impact.
+        <br />
         <span
           class="text-clip bg-gradient-to-tr dark:from-violet-500 dark:to-teal-200 from-violet-600 to-teal-400 bg-clip-text font-mono italic tracking-tighter"
         >
-          self improving
+          Scale yourself
         </span>
-        <br />
-         AI products
       </h1>
-      <p
-        class="text-md max-w-2xl pb-10 text-color text-center opacity-80 bg-blend-screen sm:text-lg"
-      >
-        Evaluate quality & make changes without regressions
-      </p>
-      {/* end: hero-copy */}
-
-      {/* start: hero-cta */}
-      <div
-        class="flex flex-col items-center justify-center gap-x-12 gap-y-10 md:flex-row"
-      >
         <div
-          class="bg-gradient-to-br from-teal-200 to-purple-600 p-[1px] rounded-lg mb-2 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg cursor-pointer focus-visible:outline-none"
+          class="bg-gradient-to-br from-teal-200 to-purple-600 p-[1px] rounded-lg my-6 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg cursor-pointer focus-visible:outline-none"
         >
           <div
             id="CTAButton"
@@ -70,258 +40,16 @@ import GitCompareArrows from "../components/icons/GitCompareArrows.astro";
             <ChevronRight className="h-5 w-5 ml-2" />
           </div>
         </div>
-      </div>
+      {/* end: hero-copy */}
 
-      {/* end: hero-cta */}
-      <div
-        class="mt-10 overflow-hidden bg-surface rounded-lg md:rounded-2xl border border-surface shadow-lg"
-      >
-        <Image
-          src={studioDash}
-          alt="Screenshot of the Studio being used to iterate on a production AI conversation"
-        />
-      </div>
-
-      {/* PROMPTS SECTION */}
+      {/* Footer */}
       <section class="w-full flex flex-col items-center">
-        <h2
-          class="via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 pb-6 md:mt-20 text-center text-4xl sm:text-6xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow max-w-4xl tracking-tight"
-        >
-          Change your prompts with confidence
-        </h2>
-        <p
-          class="max-w-lg leading-7 text-center text-color-700 text-lg pb-10 md:pb-20"
-        >
-          Stop copy pasting prompts in spreadsheets.
-          <br />
-           Measure prompt quality, experiment, and deploy directly from the
-          Studio.
-        </p>
-
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center auto-rows-fr"
-        >
-          <div
-            class="col-span-1 h-full bg-surface-50 border border-surface rounded-round p-4 sm:p-9 flex flex-col items-center gap-6 hover:border-surface-lighter transition-all duration-200"
-          >
-            <h3 class="text-color text-2xl font-medium text-center">
-              Full control of conversations
-            </h3>
-            <p class="leading-7 text-center text-color-700">
-              Import your production conversations and replay them at will to
-              understand and improve your product’s behavior.
-            </p>
-            <Image
-              src={promptBentoControl}
-              alt="Screenshot of the Studio showcasing the control of chat messages"
-            />
-          </div>
-          <div
-            class="col-span-1 h-full bg-surface-50 border border-surface rounded-round p-4 sm:p-9 flex flex-col items-center gap-6 hover:border-surface-lighter transition-all duration-200"
-          >
-            <h3 class="text-color text-2xl font-medium text-center">
-              Perfect your prompts
-            </h3>
-            <p class="leading-7 text-center text-color-700">
-              Create or import your prompts, iterate on them, deploy and track
-              their performance without requiring engineering deploys.
-            </p>
-            <Image
-              src={promptBentoPrompt}
-              alt="Screenshot of the Studio showcasing the power of prompts"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* DATA LOOP SECTION */}
-      <section class="w-full flex flex-col items-center">
-        <h2
-          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-2xl tracking-tight"
-        >
-          Improve product quality
-        </h2>
-        <p class="max-w-xl leading-7 text-center text-color-700 text-lg">
-          AI systems should improve when exposed to real-world scenarios.
-          Leverage our tools to ensure that your application is <Emphasis>improving</Emphasis>
-           with production experience, not <Emphasis>regressing</Emphasis> when you make
-          changes!
-        </p>
-        <div
-          class="pt-8 sm:pt-16 grid grid-cols-1 md:grid-cols-5 gap-16 items-center"
-        >
-          <div class="col-span-1 sm:col-span-3">
-            <Image src={loop} alt="Diagram of an AI application's data loop" />
-          </div>
-          <div class="col-span-1 sm:col-span-2 space-y-8">
-            <div class="flex items-center gap-16">
-              <div
-                class="bg-gradient-to-br from-teal-400 to-purple-700 rounded-full p-[1px]"
-              >
-                <div
-                  class="rounded-full px-4 py-1 bg-surface-50 text-sm font-medium"
-                >
-                  Offline tooling
-                </div>
-              </div>
-              <div
-                class="text-color-700 text-sm font-medium hover:cursor-pointer"
-                title="coming soon!"
-                data-tooltip-placement="top"
-              >
-                Framework
-              </div>
-            </div>
-            <div class="flex flex-col gap-6">
-              <div>
-                <div class="flex items-center gap-2">
-                  <Crosshair size="18" />
-                  <p class="font-medium">Detect undesired behaviors</p>
-                </div>
-                <div class="text-color-700">
-                  Identify and understand undesired behaviors from your AI
-                  system.
-                </div>
-              </div>
-
-              <div>
-                <div class="flex items-center gap-2">
-                  <History size="18" />
-                  <p class="font-medium">Time travel</p>
-                </div>
-                <div class="text-color-700">
-                  Replay production traffic to understand how to improve the
-                  system.
-                </div>
-              </div>
-
-              <div>
-                <div class="flex items-center gap-2">
-                  <GitCompareArrows size="18" />
-                  <p class="font-medium">Iterate</p>
-                </div>
-                <div class="text-color-700">
-                  Test prompts and config changes, evaluate their performance
-                  and release them to production.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Work as a team section */}
-      <section class="w-full flex flex-col items-center">
-        <h2
-          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
-        >
-          Work as a team
-        </h2>
-        <p class="max-w-2xl leading-7 text-center text-color-700 text-lg">
-          Studio was designed for you to leverage your <Emphasis>entire</Emphasis> team, not
-          just engineers. Get all your team to collaborate on the platform and
-          improve your AI app.
-        </p>
-
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 gap-16 items-center pt-4 sm:pt-10 auto-rows-fr"
-        >
-          <div
-            class="hidden sm:flex col-span-1 h-full flex-col items-center justify-evenly"
-          >
-            <p class="leading-7 text-center text-color text-start text-lg">
-              Deploy changes to the system without engineering bottlenecks.
-            </p>
-
-            <p class="leading-7 text-center text-color-700 text-start text-lg">
-              Share prompts, openAI tools, and conversations with your team.
-            </p>
-
-            <p class="leading-7 text-center text-color-700 text-start text-lg">
-              Duplicate production data for session replay and time travel.
-            </p>
-
-            <p class="leading-7 text-center text-color-700 text-start text-lg">
-              Non-technical members contribute directly with prompt management,
-              evaluation, versioning and deployment.
-            </p>
-          </div>
-
-          <div class="col-span-1 p-10">
-            <Image
-              src={changesDeployment}
-              alt="Screenshot of the Studio showcasing the control of chat messages"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section class="w-full flex flex-col items-center">
-        <h2
-          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl max-w-xl tracking-tight"
-        >
-          Trusted by the best
-        </h2>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-4 sm:pt-10 items-start"
-        >
-          <Testimonial
-            text="When we started expanding support to multiple LLMs in our product, Axflow was invaluable in testing out the prompt and response variations across the different models all in one place."
-            image={naresh}
-            title="CTO, Codestory"
-            name="Naresh"
-          />
-          <Testimonial
-            text="After onboarding to Studio, both eng and non-eng folks started building and shipping prompts to production with confidence."
-            image={irwin}
-            title="CTO, Welling.ai"
-            name="Irwin"
-          />
-          <Testimonial
-            text="Axflow Studio is a very robust and collaborative playground for prompt engineering! Both engineers and product managers have been able to refine prompts there before incorporating them in our product. I especially like that Studio covers all prompting features, including actions and function calls, something we could not find in OpenAI's own playground."
-            image={flo}
-            title="Head of Engineering, Double"
-            name="Flo"
-          />
-        </div>
-      </section>
-      {/* Last CTA*/}
-      <section class="w-full flex flex-col items-center">
-        <h2
-          class="leading-10 via-zinc-200 bg-gradient-to-br dark:from-white dark:via-zinc-200 dark:to-zinc-400 from-zinc-800 to-zinc-600 bg-clip-text pt-16 md:pt-40 pb-6 sm:pb-8 text-center text-4xl font-medium text-transparent opacity-90 bg-blend-screen drop-shadow sm:text-6xl tracking-tight"
-        >
-          Level up your AI worfklow
-        </h2>
-        <p class="max-w-2xl leading-7 text-center text-color-700 text-lg">
-          Focus on your <Emphasis>core product</Emphasis>, not LLM tools.
-        </p>
-        <div
-          class="bg-gradient-to-br from-teal-200 to-purple-600 p-[1px] rounded-lg my-6 transition-all duration-200 ease-in-out hover:-translate-y-[1px] hover:shadow-lg cursor-pointer focus-visible:outline-none"
-        >
-          <div
-            id="CTAButton2"
-            class="text-base text-color flex justify-center items-center rounded-lg bg-zinc-800 py-2.5 pl-4 pr-3"
-          >
-            Book a demo
-            <ChevronRight className="h-5 w-5 ml-2" />
-          </div>
-        </div>
-
         <footer class="shrink-0 grow-0 pb-6 pt-24">
           <div
             class="my-1 text-center font-mono text-xs leading-5 text-color-400 md:text-sm lg:my-4"
           >
             <div class="flex flex-col items-center">
               <p>&copy; 2024 Axilla, Inc. All rights reserved.</p>
-              <p>
-                <a class="underline" href="/privacy-policy">Privacy policy</a> &
-
-
-                <a class="underline" href="/terms-of-service"
-                  >Terms of service</a
-                >
-              </p>
             </div>
           </div>
         </footer>
